@@ -34,38 +34,66 @@ h1 {
 }
 
 .sidebar {
-  width: 80px; /* Adjust width as needed for your icons later */
-  flex-shrink: 0; /* Prevent sidebar from shrinking */
-  position: fixed; /* Keep sidebar fixed on screen */
-  top: 0;
+  /* Keep width, flex-shrink, background, etc. */
+  width: 80px; 
+  flex-shrink: 0; 
+  background-color: #f8f9fa; 
+  padding-top: 2em; 
+  padding-bottom: 2em; 
+  box-sizing: border-box; 
+  display: flex;
+  flex-direction: column; 
+  align-items: center; 
+  justify-content: flex-end; 
+  border-right: 1px solid #EEEEEE; 
+
+  /* Adjust fixed positioning */
+  position: fixed; 
   left: 0;
-  height: 100vh; /* Make sidebar full viewport height */
-  background-color: #f8f9fa; /* Optional: temporary background to see it */
-  /* We can add padding inside later for icons */
-  /* border-right: 1px solid #eee; */ /* Optional: subtle separator line */
+  top: 60px; /* <<< START BELOW FIXED HEADER */
+  height: calc(100vh - 60px); /* <<< ADJUST HEIGHT */
 }
 
 .main-content-area {
-  flex-grow: 1; /* Allow this area to take up remaining space */
-  margin-left: 80px; /* Crucial: MUST match sidebar width to prevent overlap */
-  /* Header, Main, Footer are inside this div */
-  display: flex; /* Use flex for vertical stacking */
-  flex-direction: column; /* Stack header, main, footer vertically */
-  min-height: 100vh; /* Ensure it takes at least full height */
+  /* Keep flex-grow */
+  flex-grow: 1; 
+  margin-left: 80px; /* Keep sidebar offset */
+
+  /* Add padding to push content below fixed header */
+  padding-top: 60px; /* <<< ADD PADDING EQUAL TO HEADER HEIGHT */
+
+  /* Keep flex stacking */
+  display: flex; 
+  flex-direction: column; 
+  min-height: 100vh; 
+  box-sizing: border-box; /* Add box-sizing if using padding */
 }
 
-/* Adjust Header for Nav positioning */
+/* Adjust Header Container for Full Width Background/Border */
 .main-content-area header {
-  padding: 1em 2em; /* Add padding */
-  border-bottom: 1px solid #EEEEEE; /* Optional bottom border */
-  display: flex; /* Use flexbox for nav alignment */
-  justify-content: flex-end; /* Push nav to the right */
-  flex-shrink: 0; /* Prevent header from shrinking */
+  /* Keep background, width, box-sizing, margin-left, padding-left */
+  background-color: #FDFDFD; 
+  width: 100%; 
+  box-sizing: border-box; 
+  margin-left: -80px; 
+  padding-left: 80px; 
+  /* border-bottom: 1px solid #EEEEEE; */ /* <<< REMOVE THIS LINE */
+  position: relative; /* <<< ENSURE THIS IS PRESENT */
+  z-index: 5; 
+  padding-top: 0; 
+  padding-bottom: 0; 
+  flex-shrink: 0; 
 }
 
-/* Adjust Nav link margins */
-nav a {
-  margin-left: 1.5em; /* Space out nav links */
+/* NEW Rule: Full-width border using pseudo-element */
+.main-content-area header::after {
+  content: ''; /* Required */
+  display: block; 
+  width: 100%; /* Span full width */
+  border-bottom: 1px solid #EEEEEE; /* The actual border */
+  position: absolute; /* Position relative to the header */
+  bottom: 0; /* Stick it to the bottom */
+  left: 0; /* Align to the left edge */
 }
 
 /* Adjust Main Content area */
@@ -80,17 +108,31 @@ nav a {
 
 /* Adjust Footer */
 .main-content-area footer {
-  max-width: 800px; /* Match main width */
+  /* Remove these: */
+  /* max-width: 800px; */ 
+  /* margin-left: auto; */
+  /* margin-right: auto; */
+
+  /* Ensure these are present: */
   width: 100%;
-  margin-left: auto; /* Center footer content */
-  margin-right: auto;
-  margin-top: auto; /* Push footer towards the bottom */
-  padding: 1em 2em;
+  box-sizing: border-box; /* Include padding in width */
+  padding: 1em 2em; /* Horizontal padding */
+  text-align: center; /* Center the text inside */
+
+  /* Keep other styles */
+  margin-top: auto; 
   border-top: 1px solid #EEEEEE;
   font-size: 0.9em;
   color: #6c757d;
-  flex-shrink: 0; /* Prevent footer from shrinking */
-  text-align: center; /* Center text in footer */
+  flex-shrink: 0; 
+}
+
+.header-content {
+  max-width: 1100px; /* Match project list max-width? Or use 800px? */
+  margin: 0 auto; /* Center the content block */
+  padding: 1em 2em; /* Vertical/Horizontal padding for nav */
+  display: flex; /* Use flexbox for nav alignment */
+  justify-content: flex-end; /* Push nav to the right */
 }
 
 /* === Sidebar Icon Styles === */
@@ -249,49 +291,105 @@ nav a:hover .nav-number{
   border-radius: 4px; /* Optional: slightly rounded corners */
 }
 
-/* === Landing Page Intro Styles === */
-
-.landing-intro {
-  text-align: center; /* Center align all content within the intro block */
-  padding: 3em 0; /* Add some vertical spacing */
+/* === New Landing Page Intro Section === */
+.intro-section {
+  display: flex;
+  align-items: center; /* Vertically align image and text */
+  gap: 3em; /* Space between image and text */
+  margin-top: 3em;
+  margin-bottom: 4em; /* Space before featured projects */
 }
 
-.profile-pic-container {
-  margin-bottom: 1.5em; /* Space below the picture */
+.intro-image {
+  flex-basis: 300px; /* Set a size for the image container */
+  flex-shrink: 0; /* Don't allow image container to shrink */
 }
 
-.profile-pic {
-  width: 150px; /* Adjust size as needed */
-  height: 150px; /* Same as width for a square */
-  border-radius: 50%; /* Make the image circular */
-  object-fit: cover; /* Ensure image covers the area nicely without distortion */
-  border: 3px solid #eee; /* Optional subtle border */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Optional subtle shadow */
+.intro-image img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px; /* Soft rounded corners */
+  /* border: 1px solid #eee; */ /* Optional border */
 }
 
-.intro-name {
-  font-size: 1.8em; /* Larger font size for name */
-  font-weight: 700; /* Bold */
+.intro-text {
+  flex-grow: 1; /* Allow text block to take remaining space */
+}
+
+.intro-hello {
+  font-size: 1em;
+  color: #6c757d; /* Gray */
+  margin-bottom: 0.5em;
+}
+
+/* Override default h1/h2 margins if needed */
+.intro-text .intro-name { 
+  font-size: 2.5em; /* Larger name */
+  font-weight: 700;
   margin-top: 0;
-  margin-bottom: 0.1em; 
-  color: #212121; /* Dark text */
+  margin-bottom: 0.25em; 
+  color: #212121; 
 }
 
-.intro-username {
+.intro-bio {
   font-size: 1.1em;
-  font-weight: 400; /* Regular weight */
-  color: #888888; /* Medium Gray */
-  margin-top: 0;
-  margin-bottom: 1em;
+  color: #333;
+  line-height: 1.7;
+  max-width: 550px; /* Limit bio line length */
 }
 
-.intro-tagline {
-  font-size: 1.1em;
-  color: #333; /* Slightly darker than username */
-  max-width: 600px; /* Limit width for readability */
-  margin-left: auto;
-  margin-right: auto; /* Center the tagline */
+
+/* === Featured Projects Section === */
+.featured-projects {
+  margin-bottom: 4em; /* Space below section */
 }
+
+.featured-projects h2 {
+  /* Optional: Style the heading */
+  margin-bottom: 1.5em;
+  font-weight: 700;
+}
+
+.featured-project-list {
+  /* Contains the project items */
+}
+
+/* Style individual featured items similar to blog previews */
+.featured-project-item {
+  display: flex; 
+  justify-content: space-between; 
+  align-items: flex-start; 
+  gap: 2em; 
+  margin-bottom: 3em;
+  padding-bottom: 1.5em;
+  border-bottom: 1px solid #eee;
+}
+
+.featured-project-item:last-child {
+   border-bottom: none; /* No border on last item */
+   margin-bottom: 0;
+}
+
+/* Reuse preview styles if they exist and work, or redefine */
+.featured-project-item .preview-content { flex-grow: 1; }
+.featured-project-item .preview-thumbnail { flex-basis: 200px; flex-shrink: 0; } /* Adjust size */
+.featured-project-item .preview-thumbnail img { max-width: 100%; height: auto; display: block; border-radius: 4px;}
+.featured-project-item .project-tech { font-size: 0.85em; color: #6c757d; margin-top: 1em; }
+.featured-project-item p:last-child a { color: #E53935; font-weight: 600; }
+.featured-project-item p:last-child a:hover { text-decoration: underline; }
+.featured-project-item h3 { margin-top: 0; margin-bottom: 0.5em; }
+ .featured-project-item h3 a { color: #212121; text-decoration: none; }
+.featured-project-item h3 a:hover { color: #E53935; text-decoration: underline; }
+
+
+.all-projects-link {
+  margin-top: 2.5em;
+  text-align: center;
+}
+/* Reuse .cta-button style if available */
+
+
 
 /* Optional Button Styling - uncomment and adjust if you add buttons */
 /*
@@ -415,4 +513,65 @@ nav a.active .nav-text { /* Style both number and text */
 nav a.active:hover,
 nav a.active:hover .nav-number {
     color: #E53935; /* Keep it red */
+}
+
+/* === Site Brand (Top-Left Name) Styles === */
+
+.site-brand {
+   /* position: fixed; */ /* REMOVE */
+   /* top: 0; */ /* REMOVE */
+   /* left: 0; */ /* REMOVE */
+   /* z-index: 10; */ /* REMOVE */
+   padding: 0; /* Remove old padding */
+}
+.site-brand a { /* Keep styling */
+  color: #212121;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 1.1em;
+  transition: color 0.2s ease-in-out;
+}
+.site-brand a:hover {
+  color: #E53935;
+}
+
+/* === New Site Header Styles === */
+.site-header {
+  background-color: #FDFDFD; /* Or #FFFFFF */
+  border-bottom: 1px solid #EEEEEE;
+  position: fixed; /* Fix header to top */
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 100; /* Ensure header is above other elements */
+}
+
+.site-header-content {
+  /* Center content and space out brand/nav */
+  max-width: 1100px; /* Or your preferred content width */
+  margin: 0 auto;
+  padding: 1em 2em; /* Vertical and Horizontal padding */
+  display: flex;
+  justify-content: space-between; /* Push brand left, nav right */
+  align-items: center;
+  min-height: 3em; /* Ensure minimum height, adjust as needed */
+}
+
+/* Call to Action Button Styling */
+.cta-button {
+  display: inline-block;
+  margin-top: 1.5em;
+  padding: 0.8em 1.5em;
+  background-color: #E53935; /* Red accent */
+  color: #fff; /* White text */
+  font-weight: 600;
+  border-radius: 4px;
+  text-decoration: none;
+  transition: background-color 0.2s ease;
+}
+
+.cta-button:hover {
+  background-color: #c62828; /* Slightly darker red on hover */
+  color: #fff;
+  text-decoration: none;
 }

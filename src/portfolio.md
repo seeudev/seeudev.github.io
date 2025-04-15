@@ -1,6 +1,6 @@
 ---
 layout: layout.njk
-title: Portfolio
+title: Portfolio | seeudev
 ---
 
 ## Projects

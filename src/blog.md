@@ -1,6 +1,6 @@
 ---
 layout: layout.njk
-title: Blog
+title: Blog | seeudev
 ---
 
 ## Latest Posts

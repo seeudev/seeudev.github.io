@@ -1,6 +1,6 @@
 ---
 layout: layout.njk
-title: About Me
+title: About Me | seeudev
 ---
 
 ## About Me
