@@ -1,0 +1,52 @@
+{# src/_includes/project.njk #}
+---
+layout: layout.njk
+---
+<article class="project-full">
+
+  {% if image %}
+  <img src="{{ image | url }}" alt="Screenshot of {{ title }}" class="project-main-image">
+  {% endif %}
+
+  <div class="project-meta">
+      {# Display Technologies using a loop instead of join filter #}
+      {% if technologies and technologies.length > 0 %}
+          <p>
+              <strong>Technologies:</strong>
+              {% for tech in technologies %}
+                  {{ tech }}{% if not loop.last %}, {% endif %} {# Add comma unless it's the last item #}
+              {% endfor %}
+          </p>
+      {% endif %}
+
+      {# Display Links #}
+      {# Check if at least one link exists before showing the paragraph #}
+      {% if (projectUrl and projectUrl != "#") or (repoUrl and repoUrl != "#") %}
+          <p>
+              {% if projectUrl and projectUrl != "#" %}
+              <a href="{{ projectUrl }}" target="_blank" rel="noopener noreferrer" class="project-link">View Live Project &rarr;</a>
+              {% endif %}
+              {% if repoUrl and repoUrl != "#" %}
+              <a href="{{ repoUrl }}" target="_blank" rel="noopener noreferrer" class="project-link">View Code &rarr;</a>
+              {% endif %}
+          </p>
+      {% endif %}
+  </div>
+
+  <hr>
+
+  <div class="project-content">
+    {{ content | safe }}
+  </div>
+
+</article>
+
+{# Keep the <style> block from before #}
+<style>
+  .project-main-image { max-width: 100%; height: auto; margin-bottom: 1.5em; border: 1px solid #eee; }
+  .project-meta { background-color: #f8f9fa; padding: 1em 1.5em; border-radius: 4px; margin-bottom: 1.5em; font-size: 0.9em; }
+  .project-meta p { margin: 0.5em 0; }
+  .project-link { display: inline-block; margin-right: 1em; font-weight: 600; color: #E53935; }
+  .project-link:hover { text-decoration: underline; }
+  .project-full hr { border: 0; height: 1px; background-color: #eee; margin: 2em 0; }
+</style>

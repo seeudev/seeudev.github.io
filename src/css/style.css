@@ -1,0 +1,418 @@
+/* src/css/style.css */
+
+/* === Basic Styles === */
+body {
+  font-family: 'Inter', sans-serif; /* Use Inter, fallback to generic sans-serif */
+  margin: 0; /* Remove default browser margin */
+  padding: 0; /* Remove default browser padding */
+  background-color: #FDFDFD; /* Very light off-white background */
+  color: #212121; /* Dark gray text color */
+  line-height: 1.6; /* Improve readability */
+}
+
+/* Basic link styling */
+a {
+  color: #212121; /* Same as body text */
+  text-decoration: none; /* Remove underline by default */
+}
+
+/* Add red accent on hover */
+a:hover {
+  color: #E53935; /* Your red accent color */
+  text-decoration: underline; /* Add underline on hover */
+}
+
+/* Set main headings to bold weight */
+h1 {
+  font-weight: 700; /* Use the bold weight (ensure you imported 700 from Google Fonts) */
+}
+
+
+/* === Layout Styles === */
+.site-wrapper {
+  display: flex; /* Enable flexbox layout */
+}
+
+.sidebar {
+  width: 80px; /* Adjust width as needed for your icons later */
+  flex-shrink: 0; /* Prevent sidebar from shrinking */
+  position: fixed; /* Keep sidebar fixed on screen */
+  top: 0;
+  left: 0;
+  height: 100vh; /* Make sidebar full viewport height */
+  background-color: #f8f9fa; /* Optional: temporary background to see it */
+  /* We can add padding inside later for icons */
+  /* border-right: 1px solid #eee; */ /* Optional: subtle separator line */
+}
+
+.main-content-area {
+  flex-grow: 1; /* Allow this area to take up remaining space */
+  margin-left: 80px; /* Crucial: MUST match sidebar width to prevent overlap */
+  /* Header, Main, Footer are inside this div */
+  display: flex; /* Use flex for vertical stacking */
+  flex-direction: column; /* Stack header, main, footer vertically */
+  min-height: 100vh; /* Ensure it takes at least full height */
+}
+
+/* Adjust Header for Nav positioning */
+.main-content-area header {
+  padding: 1em 2em; /* Add padding */
+  border-bottom: 1px solid #EEEEEE; /* Optional bottom border */
+  display: flex; /* Use flexbox for nav alignment */
+  justify-content: flex-end; /* Push nav to the right */
+  flex-shrink: 0; /* Prevent header from shrinking */
+}
+
+/* Adjust Nav link margins */
+nav a {
+  margin-left: 1.5em; /* Space out nav links */
+}
+
+/* Adjust Main Content area */
+.main-content-area main { /* or just 'main' */
+  max-width: 800px; /* Restore max width for readability */
+  width: 100%; 
+  margin-left: auto; /* Restore centering */
+  margin-right: auto; /* Restore centering */
+  padding: 2em; 
+  flex-grow: 1; 
+}
+
+/* Adjust Footer */
+.main-content-area footer {
+  max-width: 800px; /* Match main width */
+  width: 100%;
+  margin-left: auto; /* Center footer content */
+  margin-right: auto;
+  margin-top: auto; /* Push footer towards the bottom */
+  padding: 1em 2em;
+  border-top: 1px solid #EEEEEE;
+  font-size: 0.9em;
+  color: #6c757d;
+  flex-shrink: 0; /* Prevent footer from shrinking */
+  text-align: center; /* Center text in footer */
+}
+
+/* === Sidebar Icon Styles === */
+
+.sidebar {
+  /* Add some padding inside the sidebar */
+  padding-top: 2em; 
+  /* Center content vertically using flexbox */
+  display: flex;
+  justify-content: center; /* Center items horizontally (useful if sidebar wider) */
+  /* background-color: #f8f9fa; */ /* Keep or remove background */
+}
+
+.social-links ul {
+  list-style: none; /* Remove default bullet points */
+  padding: 0;
+  margin: 0;
+  display: flex; /* Arrange list items */
+  flex-direction: column; /* Stack items vertically */
+  align-items: center; /* Center icons horizontally in the column */
+}
+
+.social-links li {
+  margin-bottom: 1.5em; /* Space out icons vertically */
+}
+
+.social-links a {
+  display: inline-block; /* Needed for potential transforms/effects */
+  color: #6c757d; /* Use a gray color for icons */
+  transition: color 0.2s ease-in-out; /* Smooth transition for hover */
+}
+
+.social-links a:hover {
+  color: #E53935; /* Red accent color on hover */
+  text-decoration: none; /* Ensure no underline appears on icon hover */
+}
+
+.social-links svg {
+  width: 24px; /* Control icon size */
+  height: 24px; /* Control icon size */
+  display: block; /* Prevents potential extra space below inline SVGs */
+}
+
+/* === Navigation Styles === */
+
+.main-content-area header{
+    width: 100%;
+    box-sizing: border-box;
+}
+
+nav a{
+    margin-left: 2em;
+    font-size: 0.9em;
+    text-decoration: none;
+    color: #212121;
+    display: inline-block;
+    transition: color 0.2s ease-in-out;
+}
+
+nav .nav-number{
+    color: #E53935;
+    font-weight: 400;
+    margin-right: 0.3em;
+}
+
+nav .nav-text{
+    font-weight: 600;
+}
+
+nav a:hover,
+nav a:hover .nav-number{
+    color: #E53935;
+    text-decoration: none;
+}
+
+/* === Post List Styles === */
+
+.post-list {
+  list-style: none; /* Remove bullets */
+  padding: 0;
+  margin: 0;
+}
+
+.post-preview {
+  margin-bottom: 3em; /* Space between post previews */
+  padding-bottom: 1.5em;
+  border-bottom: 1px solid #eee; /* Separator line */
+}
+
+.post-preview h3 {
+  margin-top: 0;
+  margin-bottom: 0.25em;
+}
+
+.post-preview h3 a {
+  color: #212121; /* Black title */
+  text-decoration: none;
+}
+.post-preview h3 a:hover {
+  color: #E53935; /* Red hover for title */
+  text-decoration: underline;
+}
+
+.post-meta {
+  color: #6c757d; /* Gray for date/meta */
+  font-size: 0.9em;
+  margin-top: 0;
+  margin-bottom: 1em;
+}
+
+.post-preview p:last-child {
+  margin-bottom: 0; /* Remove extra space after 'Read More' */
+}
+
+.post-preview a:not(h3 a) { /* Style 'Read More' link */
+   color: #E53935;
+   font-weight: 600; /* Semi-bold */
+}
+.post-preview a:not(h3 a):hover {
+   text-decoration: underline;
+}
+
+/* === Full Post Styles === */
+.post-full hr {
+  border: 0;
+  height: 1px;
+  background-color: #eee;
+  margin: 2em 0;
+}
+
+/* === Post Preview Layout Styles === */
+
+.post-preview {
+  display: flex; /* Use flexbox for side-by-side layout */
+  justify-content: space-between; /* Push items apart */
+  align-items: flex-start; /* Align items to the top */
+  gap: 2em; /* Add space between text and image */
+  margin-bottom: 3em;
+  padding-bottom: 1.5em;
+  border-bottom: 1px solid #eee;
+}
+
+.preview-content {
+  flex-grow: 1; /* Allow text content to take available space */
+}
+
+.preview-thumbnail {
+  flex-basis: 150px; /* Give thumbnail a specific base width */
+  flex-shrink: 0; /* Prevent thumbnail from shrinking */
+}
+
+.preview-thumbnail img {
+  max-width: 100%; /* Ensure image scales down */
+  height: auto; /* Maintain aspect ratio */
+  display: block; /* Remove extra space below image */
+  border-radius: 4px; /* Optional: slightly rounded corners */
+}
+
+/* === Landing Page Intro Styles === */
+
+.landing-intro {
+  text-align: center; /* Center align all content within the intro block */
+  padding: 3em 0; /* Add some vertical spacing */
+}
+
+.profile-pic-container {
+  margin-bottom: 1.5em; /* Space below the picture */
+}
+
+.profile-pic {
+  width: 150px; /* Adjust size as needed */
+  height: 150px; /* Same as width for a square */
+  border-radius: 50%; /* Make the image circular */
+  object-fit: cover; /* Ensure image covers the area nicely without distortion */
+  border: 3px solid #eee; /* Optional subtle border */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Optional subtle shadow */
+}
+
+.intro-name {
+  font-size: 1.8em; /* Larger font size for name */
+  font-weight: 700; /* Bold */
+  margin-top: 0;
+  margin-bottom: 0.1em; 
+  color: #212121; /* Dark text */
+}
+
+.intro-username {
+  font-size: 1.1em;
+  font-weight: 400; /* Regular weight */
+  color: #888888; /* Medium Gray */
+  margin-top: 0;
+  margin-bottom: 1em;
+}
+
+.intro-tagline {
+  font-size: 1.1em;
+  color: #333; /* Slightly darker than username */
+  max-width: 600px; /* Limit width for readability */
+  margin-left: auto;
+  margin-right: auto; /* Center the tagline */
+}
+
+/* Optional Button Styling - uncomment and adjust if you add buttons */
+/*
+.cta-button {
+  display: inline-block;
+  margin-top: 1.5em;
+  padding: 0.8em 1.5em;
+  background-color: #E53935; // Red accent
+  color: #fff;
+  font-weight: 600;
+  border-radius: 4px;
+  text-decoration: none;
+  transition: background-color 0.2s ease;
+}
+
+.cta-button:hover {
+  background-color: #d32f2f; // Darker red on hover
+  color: #fff;
+  text-decoration: none;
+}
+*/
+
+/* === Project List Styles === */
+
+.project-list {
+  display: flex; /* Use Flexbox */
+  flex-wrap: wrap; /* Allow items to wrap to next line */
+  gap: 2em; /* Space between items */
+
+  /* Keep centered container */
+  max-width: 1100px; 
+  margin: 2em auto; 
+  padding: 0; 
+}
+
+.project-preview {
+  border: 1px solid #eee; 
+  border-radius: 6px; 
+  overflow: hidden; 
+  background-color: #fff; 
+  box-shadow: 0 2px 5px rgba(0,0,0,0.05); 
+  display: flex; 
+  flex-direction: column; /* Stack image/content vertically */
+  /* height: 100%; */ /* Removed - harder with flex wrap */
+
+  /* Flex item sizing */
+  flex-grow: 1; /* Allow items to grow */
+  flex-basis: 300px; /* Set a minimum 'ideal' width before wrapping */
+  /* Try uncommenting the calc() below if 300px doesn't create two columns well */
+  /* flex-basis: calc(50% - 1em); */ /* Target ~two columns minus half the gap */
+  box-sizing: border-box; /* Include padding/border in width calculation */
+}
+
+.project-preview-thumbnail {
+  width: 100%;
+  /* Fixed aspect ratio for consistency? Or fixed height? */
+  height: 180px; /* Example fixed height */
+}
+
+.project-preview-thumbnail img {
+  display: block;
+  width: 100%;
+  height: 100%; /* Fill the container height */
+  object-fit: cover; /* Cover the area, cropping if necessary */
+}
+
+.project-preview-content {
+  padding: 1em 1.5em;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1; /* Allow content area to grow to fill card height */
+}
+
+.project-preview-content h3 {
+  margin-top: 0;
+  margin-bottom: 0.5em;
+}
+
+.project-preview-content h3 a {
+  color: #212121;
+  text-decoration: none;
+}
+.project-preview-content h3 a:hover {
+  color: #E53935;
+  text-decoration: underline;
+}
+
+.project-preview-content p {
+  font-size: 0.95em;
+  flex-grow: 1; /* Allow summary paragraph to push tech/link down */
+}
+
+.project-preview-content .project-tech {
+    font-size: 0.85em;
+    color: #6c757d; /* Gray text */
+    margin-top: 1em;
+    flex-grow: 0; /* Don't allow tech list to grow */
+}
+
+/* Style "View Details" link */
+.project-preview-content p:last-child {
+  margin-top: 1em;
+  margin-bottom: 0;
+  flex-grow: 0; /* Don't allow link to grow */
+}
+ .project-preview-content p:last-child a {
+    color: #E53935;
+    font-weight: 600;
+}
+.project-preview-content p:last-child a:hover {
+    text-decoration: underline;
+}
+
+/* Style for the active navigation link */
+nav a.active .nav-number,
+nav a.active .nav-text { /* Style both number and text */
+  color: #E53935; /* Red accent color */
+}
+
+/* Optional: Prevent hover effect on the active link */
+nav a.active:hover,
+nav a.active:hover .nav-number {
+    color: #E53935; /* Keep it red */
+}
