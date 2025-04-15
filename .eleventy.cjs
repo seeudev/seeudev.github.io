@@ -37,7 +37,7 @@ module.exports = function(eleventyConfig) {
   return {
     dir: {
       input: "src",
-      includes: "./_includes", // Or "_includes" if inside src - ensure path is correct!
+      // includes: "./_includes", // Or "_includes" if inside src - ensure path is correct!
       output: "_site"
     },
     markdownTemplateEngine: "njk",
