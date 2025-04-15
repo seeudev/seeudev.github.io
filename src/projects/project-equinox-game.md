@@ -1,6 +1,6 @@
 ---
 title: Equinox Game
-date: 2025-04-07  # Completion or last updated date
+date: 2025-04-07  # YYYY-MM-DD FORMAT Completion or last updated date
 tags: project     # Tag to identify this as a project
 layout: project.njk # Specific layout for projects
 summary: "A Simple Space Invader Inspired Game Built On Java Swing"

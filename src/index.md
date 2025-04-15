@@ -14,8 +14,6 @@ permalink: /
     <h2 class="intro-name">Christian Harry Pancito</h2>
     <p class="intro-bio">
     	I'm a Student Developer in the Philippines eager to collaborate on exciting projects. Alongside my coding journey in higher education, I also offer professional video editing services. Let's create something amazing together!
-      <!-- I'm an IT Enthusiast based in the Philippines focused on building everything from web-based apps, games and etc.. While I'm not building those I enjoy my freetime
-      playing games or making videos on the side. -->
     </p>
   </div>
 </section>
