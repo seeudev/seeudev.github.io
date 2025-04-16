@@ -1,6 +1,6 @@
 ---
 layout: layout.njk
-title: Contact
+title: Contact | seeudev
 ---
 
 ## Get In Touch
