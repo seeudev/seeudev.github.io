@@ -1,9 +1,10 @@
-{# src/_includes/post.njk #}
 ---
 layout: layout.njk
 ---
 <article class="post-full">
-
+  {% if image %}
+  <img src="{{ image | url }}" alt="Screenshot of {{ title }}" class="post-main-image">
+  {% endif %}
   {# Attempting built-in Nunjucks date filter again #}
   {# Using custom date filters #}
       <p class="post-meta">

@@ -6,6 +6,7 @@
     <title>{{ title or "My Website" }}</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet"> 
     <link rel="stylesheet" href="/css/style.css"> 
 </head>                    
@@ -16,27 +17,52 @@
             <div class="site-brand">
                 <a href="{{ '/' | url }}">seeudev</a> 
             </div>
-            <nav>
-                <a href="{{ '/blog/' | url }}" {% if page.url == ('/blog/' | url) %}class="active"{% endif %}>
-                    <span class="nav-number">01.</span> 
-                    <span class="nav-text">Blog</span>
-                </a>
-                <a href="{{ '/portfolio/' | url }}" {% if page.url == ('/portfolio/' | url) %}class="active"{% endif %}>
-                    <span class="nav-number">02.</span> 
-                    <span class="nav-text">Portfolio</span>
-                </a>
-                 <a href="{{ '/about/' | url }}" {% if page.url == ('/about/' | url) %}class="active"{% endif %}>
-                    <span class="nav-number">03.</span> 
-                    <span class="nav-text">About</span>
-                </a>
-                <a href="{{ '/contact/' | url }}" {% if page.url == ('/contact/' | url) %}class="active"{% endif %}>
-                    <span class="nav-number">04.</span> 
-                    <span class="nav-text">Contact</span>
-                </a>
-            </nav>
+                    {# --- Hamburger Button (Mobile Only) --- #}
+                <button class="menu-toggle" id="menu-toggle" aria-label="Toggle Menu" aria-expanded="false" aria-controls="main-nav">
+                <svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor" aria-hidden="true">
+                    <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"></path>
+                </svg>
+                </button>
+                    {# --- End Hamburger Button --- #}
+            <div class="nav-wrapper" id="nav-wrapper">
+                <nav id="main-nav">
+                    <a href="{{ '/blog/' | url }}" {% if page.url == ('/blog/' | url) %}class="active"{% endif %}>
+                        <span class="nav-number">01.</span> 
+                        <span class="nav-text">Blog</span>
+                    </a>
+                    <a href="{{ '/portfolio/' | url }}" {% if page.url == ('/portfolio/' | url) %}class="active"{% endif %}>
+                        <span class="nav-number">02.</span> 
+                        <span class="nav-text">Portfolio</span>
+                    </a>
+                    <a href="{{ '/about/' | url }}" {% if page.url == ('/about/' | url) %}class="active"{% endif %}>
+                        <span class="nav-number">03.</span> 
+                        <span class="nav-text">About</span>
+                    </a>
+                    <a href="{{ '/contact/' | url }}" {% if page.url == ('/contact/' | url) %}class="active"{% endif %}>
+                        <span class="nav-number">04.</span> 
+                        <span class="nav-text">Contact</span>
+                    </a>
+                </nav>
+            </div>
         </div> {# End site-header-content #}
     </header>
 
+    <script>
+    const menuToggle = document.getElementById('menu-toggle');
+    const navWrapper = document.getElementById('nav-wrapper');
+    const body = document.body;
+
+    if (menuToggle && navWrapper) {
+        menuToggle.addEventListener('click', () => {
+            const isExpanded = menuToggle.getAttribute('aria-expanded') === 'true';
+            menuToggle.setAttribute('aria-expanded', !isExpanded);
+            navWrapper.classList.toggle('is-open');
+            body.classList.toggle('nav-open'); // Optional: Prevent scrolling when menu is open
+        });
+    }
+    </script>
+
+    
     {# Site wrapper now just contains sidebar + main area #}
     <div class="site-wrapper"> 
         <aside class="sidebar">
@@ -86,7 +112,8 @@
             </main>
 
             <footer>
-                <p>&copy; 2025 seeudev</p> {# Or your custom date filter #}
+                <p>&copy; 2025 seeudev.</p> 
+            <p>Built with <a href="https://www.11ty.dev/" target="_blank" rel="noopener noreferrer">Eleventy</a>. Hosted on GitHub Pages.</p> {# Or your custom date filter #}
             </footer>
         </div> {# End main-content-area #}
 

@@ -5,6 +5,7 @@ tags: post        # This tag identifies it as a blog post for Eleventy
 layout: post.njk  # Use the specific post layout we'll create next
 excerpt: "Today I built and deployed my personal website!"
 thumbnail: /images/001-post-thumb.jpg
+image: /images/001-post-image.jpg # Path to blog image
 ---
 
 ## Welcome to my Website!
