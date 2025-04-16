@@ -267,6 +267,9 @@ nav a:hover .nav-number{
     text-decoration: none;
 }
 
+
+  /* display: block;  */
+
 /* === Post List Styles === */
 
 .post-list {
@@ -832,7 +835,33 @@ body.nav-open {
   /* For example, line-height, etc. */
 }
 
+/* === WEB VIEW === */
+@media (min-width: 769px) {
+  .nav-wrapper {
+    display: block; /* Ensure the nav is visible on larger screens */
+    position: static; /* Reset position for desktop */
+    background-color: transparent; /* Remove background for desktop */
+    border: none; /* Remove borders for desktop */
+    box-shadow: none; /* Remove shadow for desktop */
+  }
 
+  nav {
+    display: flex; /* Use flexbox for horizontal layout */
+    justify-content: flex-end; /* Align links to the right */
+    gap: 1em; /* Add spacing between links */
+  }
+
+  nav a {
+    display: inline-block; /* Ensure links are inline */
+    padding: 0.5em 1em; /* Add padding for clickable area */
+    font-size: 1em; /* Adjust font size */
+    color: #212121; /* Default text color */
+  }
+
+  .menu-toggle {
+    display: none; /* Hide the hamburger menu on desktop */
+  }
+}
 
 /* === MOBILE VIEW === */
 /* === Media Queries for Responsiveness === */
