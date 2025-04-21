@@ -1,37 +1,76 @@
 /* src/css/style.css */
 
-/* === Basic Styles === */
-body {
-  font-family: 'Inter', sans-serif; /* Use Inter, fallback to generic sans-serif */
-  margin: 0; /* Remove default browser margin */
-  padding: 0; /* Remove default browser padding */
-  background-color: #FDFDFD; /* Very light off-white background */
-  color: #212121; /* Dark gray text color */
-  line-height: 1.6; /* Improve readability */
+/* ==========================================================================
+   1. Fonts & Basic Reset/Defaults
+   ========================================================================== */
+
+/* Import Fonts (Assuming they are imported via HTML <link> or @import) */
+/* Example:
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=JetBrains+Mono:wght@400&display=swap');
+*/
+
+/* Basic Reset & Body Defaults */
+*,
+*::before,
+*::after {
+  box-sizing: border-box; /* Apply box-sizing universally */
 }
 
-/* Basic link styling */
+html, body {
+  overflow-x: hidden; /* Prevent horizontal scroll */
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #FDFDFD; /* Very light off-white */
+  color: #212121; /* Dark gray text */
+  line-height: 1.6;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+}
+
+/* Basic Link Styling */
 a {
   color: #212121; /* Same as body text */
-  text-decoration: none; /* Remove underline by default */
+  text-decoration: none;
+  transition: color 0.2s ease-in-out; /* Smooth hover */
 }
 
-/* Set base paragraph margin */
+a:hover {
+  color: #E53935; /* Red accent */
+  text-decoration: underline;
+}
+
+/* Image Defaults */
+img {
+  max-width: 100%;
+  height: auto;
+  display: block; /* Remove extra bottom space */
+}
+
+
+/* ==========================================================================
+   2. Base Typography
+   ========================================================================== */
+
+/* Paragraphs */
 p {
   margin-top: 0;
-  margin-bottom: 1em; /* Consistent bottom margin for paragraphs */
+  margin-bottom: 1em;
 }
 
-/* Default Heading Styles */
+/* Headings */
 h1, h2, h3, h4, h5, h6 {
-  margin-top: 1.5em; /* Space above headings */
-  margin-bottom: 0.75em; /* Space below headings */
-  font-weight: 700; /* Bold for all headings by default */
-  line-height: 1.3; /* Slightly tighter line height for headings */
-  color: #212121; /* Ensure consistent color */
+  margin-top: 1.5em;
+  margin-bottom: 0.75em;
+  font-weight: 700; /* Bold */
+  line-height: 1.3;
+  color: #212121;
 }
 
-/* Define a clear size hierarchy (adjust values as you like) */
+/* Heading Size Hierarchy */
 h1 { font-size: 2.2em; }
 h2 { font-size: 1.8em; }
 h3 { font-size: 1.4em; }
@@ -39,143 +78,252 @@ h4 { font-size: 1.1em; }
 h5 { font-size: 1.0em; }
 h6 { font-size: 0.9em; }
 
-/* You can still override these in specific sections like .intro-name */
-.intro-text .intro-name {
-  font-size: 2.5em; /* Keep this larger size */
-  margin-top: 0; /* Keep specific overrides */
-  margin-bottom: 0.25em; /* Keep specific overrides */
+/* Code Blocks/Inline Code (Basic - Requires more specific styling if needed) */
+code, pre {
+  font-family: 'JetBrains Mono', monospace;
+  background-color: #f8f9fa; /* Light gray background */
+  padding: 0.2em 0.4em;
+  border-radius: 3px;
+  font-size: 0.9em;
 }
 
-/* Adjust post/project titles if needed */
-.post-preview h3,
-.project-preview-content h3,
-.featured-project-item h3,
-.experience-card h3 {
-  margin-top: 0; /* Remove top margin for card/preview titles */
-  /* Keep font-size inherited from h3 default or override if needed */
+pre {
+  padding: 1em;
+  overflow-x: auto; /* Allow horizontal scroll for long code */
+  display: block;
 }
 
-/* Adjust section headings */
-.experience-section h2,
-.featured-projects h2 {
-   margin-top: 0; /* Remove top margin if it's the first element in the section */
-   /* Keep font-size inherited from h2 default or override if needed */
+/* Horizontal Rule */
+hr {
+  border: 0;
+  height: 1px;
+  background-color: #eee; /* Light gray separator */
+  margin: 2em 0;
 }
 
-/* Add red accent on hover */
-a:hover {
-  color: #E53935; /* Your red accent color */
-  text-decoration: underline; /* Add underline on hover */
-}
+/* ==========================================================================
+   3. Core Layout (Site Wrapper, Header, Sidebar, Main Content, Footer)
+   ========================================================================== */
 
-/* Set main headings to bold weight */
-h1 {
-  font-weight: 700; /* Use the bold weight (ensure you imported 700 from Google Fonts) */
-}
-
-
-/* === Layout Styles === */
+/* --- Site Wrapper (Flex Container) --- */
 .site-wrapper {
-  display: flex; /* Enable flexbox layout */
-}
-
-.sidebar {
-  /* Keep width, flex-shrink, background, etc. */
-  width: 80px; 
-  flex-shrink: 0; 
-  background-color: #f8f9fa; 
-  padding-top: 2em; 
-  padding-bottom: 2em; 
-  box-sizing: border-box; 
   display: flex;
-  flex-direction: column; 
-  align-items: center; 
-  justify-content: flex-end; 
-  border-right: 1px solid #EEEEEE; 
+}
 
-  /* Adjust fixed positioning */
-  position: fixed; 
+/* --- Fixed Header --- */
+.site-header {
+  background-color: #FDFDFD;
+  border-bottom: 1px solid #EEEEEE;
+  position: fixed;
+  top: 0;
   left: 0;
-  top: 60px; /* <<< START BELOW FIXED HEADER */
-  height: calc(100vh - 60px); /* <<< ADJUST HEIGHT */
+  width: 100%;
+  z-index: 100;
 }
 
+.site-header-content {
+  max-width: 1100px; /* Adjust as needed */
+  margin: 0 auto;
+  padding: 1em 2em;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  min-height: 3em; /* Header height reference */
+}
+
+/* --- Fixed Sidebar --- */
+.sidebar {
+  width: 80px;
+  flex-shrink: 0;
+  background-color: #f8f9fa;
+  padding-top: 2em;
+  padding-bottom: 2em;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center; /* Center icons vertically */
+  border-right: 1px solid #EEEEEE;
+  position: fixed;
+  left: 0;
+  top: 60px; /* Start below fixed header (adjust if header height changes) */
+  height: calc(100vh - 60px); /* Adjust height based on header */
+}
+
+/* --- Main Content Area --- */
 .main-content-area {
-  /* Keep flex-grow */
-  flex-grow: 1; 
-  margin-left: 80px; /* Keep sidebar offset */
-
-  /* Add padding to push content below fixed header */
-  padding-top: 60px; /* <<< ADD PADDING EQUAL TO HEADER HEIGHT */
-
-  /* Keep flex stacking */
-  display: flex; 
-  flex-direction: column; 
-  min-height: 100vh; 
-  box-sizing: border-box; /* Add box-sizing if using padding */
+  flex-grow: 1;
+  margin-left: 80px; /* Offset for sidebar */
+  padding-top: 60px; /* Offset for fixed header */
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; /* Ensure footer stays at bottom */
+  box-sizing: border-box;
 }
 
-/* Adjust Header Container for Full Width Background/Border */
-.main-content-area header {
-  /* Keep background, width, box-sizing, margin-left, padding-left */
-  background-color: #FDFDFD; 
-  width: 100%; 
-  box-sizing: border-box; 
-  margin-left: -80px; 
-  padding-left: 80px; 
-  /* border-bottom: 1px solid #EEEEEE; */ /* <<< REMOVE THIS LINE */
-  position: relative; /* <<< ENSURE THIS IS PRESENT */
-  z-index: 5; 
-  padding-top: 0; 
-  padding-bottom: 0; 
-  flex-shrink: 0; 
-}
-
-/* NEW Rule: Full-width border using pseudo-element */
-.main-content-area header::after {
-  content: ''; /* Required */
-  display: block; 
-  width: 100%; /* Span full width */
-  border-bottom: 1px solid #EEEEEE; /* The actual border */
-  position: absolute; /* Position relative to the header */
-  bottom: 0; /* Stick it to the bottom */
-  left: 0; /* Align to the left edge */
-}
-
-/* Adjust Main Content area */
-.main-content-area main { /* or just 'main' */
-  max-width: 800px;
+/* --- Main Content Container --- */
+.main-content-area main { /* Targets the <main> element */
+  max-width: 800px; /* Main content width */
   width: 100%;
   margin-left: auto;
   margin-right: auto;
-  /* Adjust vertical padding */
-  padding: 3em 2em; /* Increased top/bottom padding */
-  flex-grow: 1;
+  padding: 3em 2em; /* Top/Bottom, Left/Right padding */
+  flex-grow: 1; /* Allow main content to fill vertical space */
 }
 
-/* Adjust Footer */
+/* --- Footer --- */
 .main-content-area footer {
   width: 100%;
-  box-sizing: border-box;
-  /* Adjust vertical padding */
-  padding: 1.5em 2em; /* Increased top/bottom padding */
+  padding: 1.5em 2em;
   text-align: center;
-  margin-top: auto;
+  margin-top: auto; /* Pushes footer down */
   border-top: 1px solid #EEEEEE;
   font-size: 0.9em;
-  color: #6c757d;
-  flex-shrink: 0;
+  color: #6c757d; /* Gray */
+  flex-shrink: 0; /* Prevent footer from shrinking */
 }
 
-.header-content {
-  max-width: 1100px; /* Match project list max-width? Or use 800px? */
-  margin: 0 auto; /* Center the content block */
-  padding: 1em 2em; /* Vertical/Horizontal padding for nav */
-  display: flex; /* Use flexbox for nav alignment */
-  justify-content: flex-end; /* Push nav to the right */
+
+/* ==========================================================================
+   4. Header Components (Brand, Navigation)
+   ========================================================================== */
+
+/* --- Site Brand (Top-Left Name) --- */
+.site-brand a {
+  color: #212121;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 1.1em;
+  transition: color 0.2s ease-in-out;
 }
 
-/* Let's ensure consistent bottom margin for sections on pages like Home/About */
+.site-brand a:hover {
+  color: #E53935; /* Red accent */
+}
+
+/* --- Desktop Navigation --- */
+nav a {
+  margin-left: 2em; /* Spacing for desktop */
+  font-size: 0.9em;
+  text-decoration: none;
+  color: #212121;
+  display: inline-block; /* Needed for consistent spacing/hover */
+}
+
+nav .nav-number {
+  color: #E53935; /* Red accent */
+  font-weight: 400;
+  margin-right: 0.3em;
+  font-family: 'JetBrains Mono', monospace;
+}
+
+nav .nav-text {
+  font-weight: 600; /* Semi-bold */
+}
+
+/* Nav Link Hover (Desktop) */
+nav a:hover,
+nav a:hover .nav-number {
+  color: #E53935; /* Red accent */
+  text-decoration: none;
+}
+
+/* Active Navigation Link */
+nav a.active .nav-number,
+nav a.active .nav-text {
+  color: #E53935; /* Red accent */
+}
+
+/* Prevent hover effect on active link */
+nav a.active:hover,
+nav a.active:hover .nav-number {
+    color: #E53935; /* Keep it red */
+}
+
+/* --- Hamburger Menu (Mobile) --- */
+.menu-toggle {
+  display: none; /* Hidden by default, shown in media query */
+  background: none;
+  border: none;
+  padding: 0.5em;
+  margin: 0;
+  cursor: pointer;
+  color: #212121;
+}
+
+.menu-toggle svg {
+  display: block;
+  width: 24px; /* Adjust size */
+  height: 24px; /* Adjust size */
+}
+
+.menu-toggle:hover {
+  color: #E53935; /* Red accent */
+}
+
+/* Mobile Navigation Container */
+.nav-wrapper {
+  display: none; /* Hidden by default, toggled by JS / media query */
+  position: absolute;
+  top: 100%; /* Below header */
+  left: 0;
+  right: 0;
+  background-color: #FDFDFD;
+  border-top: 1px solid #EEEEEE;
+  border-bottom: 1px solid #EEEEEE;
+  z-index: 100;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+.nav-wrapper.is-open {
+  display: block; /* Show when active */
+}
+
+/* Prevent body scroll when mobile menu is open */
+body.nav-open {
+  /* Optional: overflow: hidden; Consider potential layout shifts */
+}
+
+
+/* ==========================================================================
+   5. Sidebar Components (Social Links)
+   ========================================================================== */
+
+.social-links ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.social-links li {
+  margin-bottom: 1.5em; /* Space between icons */
+}
+
+.social-links a {
+  display: inline-block;
+  color: #6c757d; /* Gray */
+  transition: color 0.2s ease-in-out;
+}
+
+.social-links a:hover {
+  color: #E53935; /* Red accent */
+  text-decoration: none; /* No underline on icon hover */
+}
+
+.social-links svg {
+  width: 24px;
+  height: 24px;
+  display: block;
+}
+
+
+/* ==========================================================================
+   6. Page-Specific Sections & Components
+   ========================================================================== */
+
+/* --- General Section Spacing --- */
 .intro-section,
 .featured-projects,
 .experience-section {
@@ -188,195 +336,30 @@ h1 {
     margin-top: 4em; /* Standard top margin */
 }
 
-/* Remove top margin from intro section if it's the first thing */
+/* Remove top margin from intro section if it's the first element */
 .intro-section {
-    margin-top: 3em; /* Keep slightly less margin at the very top */
-}
-
-/* === Sidebar Icon Styles === */
-
-.sidebar {
-  /* Add some padding inside the sidebar */
-  padding-top: 2em; 
-  /* Center content vertically using flexbox */
-  display: flex;
-  justify-content: center; /* Center items horizontally (useful if sidebar wider) */
-  /* background-color: #f8f9fa; */ /* Keep or remove background */
-}
-
-.social-links ul {
-  list-style: none; /* Remove default bullet points */
-  padding: 0;
-  margin: 0;
-  display: flex; /* Arrange list items */
-  flex-direction: column; /* Stack items vertically */
-  align-items: center; /* Center icons horizontally in the column */
-}
-
-.social-links li {
-  margin-bottom: 1.5em; /* Space out icons vertically */
-}
-
-.social-links a {
-  display: inline-block; /* Needed for potential transforms/effects */
-  color: #6c757d; /* Use a gray color for icons */
-  transition: color 0.2s ease-in-out; /* Smooth transition for hover */
-}
-
-.social-links a:hover {
-  color: #E53935; /* Red accent color on hover */
-  text-decoration: none; /* Ensure no underline appears on icon hover */
-}
-
-.social-links svg {
-  width: 24px; /* Control icon size */
-  height: 24px; /* Control icon size */
-  display: block; /* Prevents potential extra space below inline SVGs */
-}
-
-/* === Navigation Styles === */
-
-.main-content-area header{
-    width: 100%;
-    box-sizing: border-box;
-}
-
-nav a{
-    margin-left: 2em;
-    font-size: 0.9em;
-    text-decoration: none;
-    color: #212121;
-    display: inline-block;
-    transition: color 0.2s ease-in-out;
-}
-
-nav .nav-number{
-  color: #E53935;
-  font-weight: 400; /* Keep existing weight or adjust if needed */
-  margin-right: 0.3em;
-  font-family: 'JetBrains Mono', monospace; /* <<< Add this line */
-}
-
-nav .nav-text{
-    font-weight: 600;
-}
-
-nav a:hover,
-nav a:hover .nav-number{
-    color: #E53935;
-    text-decoration: none;
+    margin-top: 3em; /* Slightly less margin at the very top */
 }
 
 
-  /* display: block;  */
-
-/* === Post List Styles === */
-
-.post-list {
-  list-style: none; /* Remove bullets */
-  padding: 0;
-  margin: 0;
-}
-
-.post-preview {
-  margin-bottom: 3em; /* Space between post previews */
-  padding-bottom: 1.5em;
-  border-bottom: 1px solid #eee; /* Separator line */
-}
-
-.post-preview h3 {
-  margin-top: 0;
-  margin-bottom: 0.25em;
-}
-
-.post-preview h3 a {
-  color: #212121; /* Black title */
-  text-decoration: none;
-}
-.post-preview h3 a:hover {
-  color: #E53935; /* Red hover for title */
-  text-decoration: underline;
-}
-
-.post-meta {
-  color: #6c757d; /* Gray for date/meta */
-  font-size: 0.9em;
-  margin-top: 0;
-  margin-bottom: 1em;
-}
-
-.post-preview p:last-child {
-  margin-bottom: 0; /* Remove extra space after 'Read More' */
-}
-
-.post-preview a:not(h3 a) { /* Style 'Read More' link */
-   color: #E53935;
-   font-weight: 600; /* Semi-bold */
-}
-.post-preview a:not(h3 a):hover {
-   text-decoration: underline;
-}
-
-/* === Full Post Styles === */
-.post-full hr {
-  border: 0;
-  height: 1px;
-  background-color: #eee;
-  margin: 2em 0;
-}
-
-/* === Post Preview Layout Styles === */
-
-.post-preview {
-  display: flex; /* Use flexbox for side-by-side layout */
-  justify-content: space-between; /* Push items apart */
-  align-items: flex-start; /* Align items to the top */
-  gap: 2em; /* Add space between text and image */
-  margin-bottom: 3em;
-  padding-bottom: 1.5em;
-  border-bottom: 1px solid #eee;
-}
-
-.preview-content {
-  flex-grow: 1; /* Allow text content to take available space */
-}
-
-.preview-thumbnail {
-  flex-basis: 150px; /* Give thumbnail a specific base width */
-  flex-shrink: 0; /* Prevent thumbnail from shrinking */
-}
-
-.preview-thumbnail img {
-  max-width: 100%; /* Ensure image scales down */
-  height: auto; /* Maintain aspect ratio */
-  display: block; /* Remove extra space below image */
-  border-radius: 4px; /* Optional: slightly rounded corners */
-}
-
-/* === New Landing Page Intro Section === */
+/* --- Landing Page: Intro Section --- */
 .intro-section {
   display: flex;
-  align-items: center; /* Vertically align image and text */
-  gap: 3em; /* Space between image and text */
-  margin-top: 3em;
-  margin-bottom: 4em; /* Space before featured projects */
+  align-items: center;
+  gap: 3em;
 }
 
 .intro-image {
-  flex-basis: 300px; /* Set a size for the image container */
-  flex-shrink: 0; /* Don't allow image container to shrink */
+  flex-basis: 300px;
+  flex-shrink: 0;
 }
 
 .intro-image img {
-  display: block;
-  max-width: 100%;
-  height: auto;
-  border-radius: 8px; /* Soft rounded corners */
-  /* border: 1px solid #eee; */ /* Optional border */
+  border-radius: 8px;
 }
 
 .intro-text {
-  flex-grow: 1; /* Allow text block to take remaining space */
+  flex-grow: 1;
 }
 
 .intro-hello {
@@ -385,155 +368,173 @@ nav a:hover .nav-number{
   margin-bottom: 0.5em;
 }
 
-/* Override default h1/h2 margins if needed */
-.intro-text .intro-name { 
-  font-size: 2.5em; /* Larger name */
+/* Override default h1/h2 for intro */
+.intro-text .intro-name {
+  font-size: 2.5em;
   font-weight: 700;
   margin-top: 0;
-  margin-bottom: 0.25em; 
-  color: #212121; 
+  margin-bottom: 0.25em;
+  color: #212121;
+  transition: color 0.2s ease-in-out; /* Add transition for hover */
 }
-
 .intro-name:hover {
-  color: #E53935; /* Red accent on hover */
+    color: #E53935; /* Red hover */
+    text-decoration: none; /* Remove underline if added by global 'a:hover' */
 }
 
 .intro-bio {
   font-size: 1.1em;
-  color: #333;
+  color: #333; /* Slightly darker than default body */
   line-height: 1.7;
-  max-width: 550px; /* Limit bio line length */
+  max-width: 550px;
 }
 
-
-/* === Featured Projects Section === */
-.featured-projects {
-  margin-bottom: 4em; /* Space below section */
-}
-
+/* --- Landing Page: Featured Projects --- */
 .featured-projects h2 {
-  /* Optional: Style the heading */
   margin-bottom: 1.5em;
-  font-weight: 700;
 }
 
 .featured-project-list {
-  /* Contains the project items */
+  /* Container for the items */
 }
 
-/* Style individual featured items similar to blog previews */
 .featured-project-item {
-  display: flex; 
-  justify-content: space-between; 
-  align-items: flex-start; 
-  gap: 2em; 
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 2em;
   margin-bottom: 3em;
   padding-bottom: 1.5em;
   border-bottom: 1px solid #eee;
 }
 
 .featured-project-item:last-child {
-   border-bottom: none; /* No border on last item */
+   border-bottom: none;
    margin-bottom: 0;
 }
 
-/* Reuse preview styles if they exist and work, or redefine */
 .featured-project-item .preview-content { flex-grow: 1; }
-.featured-project-item .preview-thumbnail { flex-basis: 200px; flex-shrink: 0; } /* Adjust size */
-.featured-project-item .preview-thumbnail img { max-width: 100%; height: auto; display: block; border-radius: 4px;}
+.featured-project-item .preview-thumbnail { flex-basis: 200px; flex-shrink: 0; }
+.featured-project-item .preview-thumbnail img { border-radius: 4px;}
 .featured-project-item .project-tech { font-size: 0.85em; color: #6c757d; margin-top: 1em; }
+.featured-project-item h3 { margin-top: 0; margin-bottom: 0.5em; }
+.featured-project-item h3 a { color: #212121; text-decoration: none; }
+.featured-project-item h3 a:hover { color: #E53935; text-decoration: underline; }
 .featured-project-item p:last-child a { color: #E53935; font-weight: 600; }
 .featured-project-item p:last-child a:hover { text-decoration: underline; }
-.featured-project-item h3 { margin-top: 0; margin-bottom: 0.5em; }
- .featured-project-item h3 a { color: #212121; text-decoration: none; }
-.featured-project-item h3 a:hover { color: #E53935; text-decoration: underline; }
-
 
 .all-projects-link {
   margin-top: 2.5em;
   text-align: center;
 }
-/* Reuse .cta-button style if available */
 
+/* --- Blog Index: Post List --- */
+.post-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
 
+.post-preview {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 2em;
+  margin-bottom: 3em;
+  padding-bottom: 1.5em;
+  border-bottom: 1px solid #eee;
+}
 
-/* Optional Button Styling - uncomment and adjust if you add buttons */
-/*
-.cta-button {
-  display: inline-block;
-  margin-top: 1.5em;
-  padding: 0.8em 1.5em;
-  background-color: #E53935; // Red accent
-  color: #fff;
-  font-weight: 600;
+.preview-content {
+  flex-grow: 1;
+}
+
+.preview-thumbnail {
+  flex-basis: 150px; /* Smaller thumbnail */
+  flex-shrink: 0;
+}
+
+.preview-thumbnail img {
   border-radius: 4px;
-  text-decoration: none;
-  transition: background-color 0.2s ease;
 }
 
-.cta-button:hover {
-  background-color: #d32f2f; // Darker red on hover
-  color: #fff;
+.post-preview h3 {
+  margin-top: 0;
+  margin-bottom: 0.25em;
+}
+.post-preview h3 a {
+  color: #212121;
   text-decoration: none;
 }
-*/
+.post-preview h3 a:hover {
+  color: #E53935;
+  text-decoration: underline;
+}
 
-/* === Project List Styles === */
+.post-meta {
+  color: #6c757d;
+  font-size: 0.9em;
+  margin-top: 0;
+  margin-bottom: 1em;
+}
 
+.post-preview p:last-child { /* Targets the Read More link paragraph */
+  margin-bottom: 0;
+}
+.post-preview p:last-child a { /* Style 'Read More' link */
+   color: #E53935;
+   font-weight: 600;
+}
+.post-preview p:last-child a:hover {
+   text-decoration: underline;
+}
+
+/* --- Portfolio Index: Project Grid --- */
 .project-list {
-  display: flex; /* Use Flexbox */
-  flex-wrap: wrap; /* Allow items to wrap to next line */
-  gap: 2em; /* Space between items */
-
-  /* Keep centered container */
-  max-width: 1100px; 
-  margin: 2em auto; 
-  padding: 0; 
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2em;
+  max-width: 1100px; /* Wider container for grid */
+  margin: 2em auto; /* Center grid */
+  padding: 0;
 }
 
 .project-preview {
-  border: 1px solid #eee; 
-  border-radius: 6px; 
-  overflow: hidden; 
-  background-color: #fff; 
-  box-shadow: 0 2px 5px rgba(0,0,0,0.05); 
-  display: flex; 
-  flex-direction: column; /* Stack image/content vertically */
-  /* height: 100%; */ /* Removed - harder with flex wrap */
-
-  /* Flex item sizing */
-  flex-grow: 1; /* Allow items to grow */
-  flex-basis: 300px; /* Set a minimum 'ideal' width before wrapping */
-  /* Try uncommenting the calc() below if 300px doesn't create two columns well */
-  /* flex-basis: calc(50% - 1em); */ /* Target ~two columns minus half the gap */
-  box-sizing: border-box; /* Include padding/border in width calculation */
+  border: 1px solid #eee;
+  border-radius: 6px;
+  overflow: hidden;
+  background-color: #fff;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  flex-basis: 300px; /* Ideal width before wrapping */
+  /* Consider flex-basis: calc(50% - 1em); for two columns */
+  box-sizing: border-box;
 }
 
 .project-preview-thumbnail {
   width: 100%;
-  /* Fixed aspect ratio for consistency? Or fixed height? */
-  height: 180px; /* Example fixed height */
+  height: 180px; /* Fixed height for consistency */
 }
 
 .project-preview-thumbnail img {
-  display: block;
   width: 100%;
-  height: 100%; /* Fill the container height */
-  object-fit: cover; /* Cover the area, cropping if necessary */
+  height: 100%;
+  object-fit: cover; /* Crop images to fit */
 }
 
 .project-preview-content {
   padding: 1em 1.5em;
   display: flex;
   flex-direction: column;
-  flex-grow: 1; /* Allow content area to grow to fill card height */
+  flex-grow: 1; /* Allow content to fill card height */
 }
 
 .project-preview-content h3 {
   margin-top: 0;
   margin-bottom: 0.5em;
 }
-
 .project-preview-content h3 a {
   color: #212121;
   text-decoration: none;
@@ -543,23 +544,23 @@ nav a:hover .nav-number{
   text-decoration: underline;
 }
 
-.project-preview-content p {
+.project-preview-content p { /* Summary paragraph */
   font-size: 0.95em;
-  flex-grow: 1; /* Allow summary paragraph to push tech/link down */
+  flex-grow: 1; /* Push link down */
+  margin-bottom: 1em; /* Space before link */
 }
 
-.project-preview-content .project-tech {
+.project-preview-content .project-tech { /* (If added back) */
     font-size: 0.85em;
-    color: #6c757d; /* Gray text */
-    margin-top: 1em;
-    flex-grow: 0; /* Don't allow tech list to grow */
+    color: #6c757d;
+    margin-top: 1em; /* Space above tech */
+    flex-grow: 0; /* Prevent growing */
 }
 
-/* Style "View Details" link */
-.project-preview-content p:last-child {
-  margin-top: 1em;
+.project-preview-content p:last-child { /* View Details link */
+  margin-top: auto; /* Push link to bottom */
   margin-bottom: 0;
-  flex-grow: 0; /* Don't allow link to grow */
+  flex-grow: 0;
 }
  .project-preview-content p:last-child a {
     color: #E53935;
@@ -569,235 +570,17 @@ nav a:hover .nav-number{
     text-decoration: underline;
 }
 
-/* Style for the active navigation link */
-nav a.active .nav-number,
-nav a.active .nav-text { /* Style both number and text */
-  color: #E53935; /* Red accent color */
-}
-
-/* Optional: Prevent hover effect on the active link */
-nav a.active:hover,
-nav a.active:hover .nav-number {
-    color: #E53935; /* Keep it red */
-}
-
-/* --- Hamburger Menu Styles --- */
-
-.menu-toggle {
-  display: none; /* Hidden on desktop */
-  background: none;
-  border: none;
-  padding: 0.5em;
-  margin: 0;
-  cursor: pointer;
-  color: #212121; /* Match text color */
-}
-
-.menu-toggle svg {
-  display: block; /* Prevent extra space */
-}
-
-.menu-toggle:hover {
-  color: #E53935; /* Red accent on hover */
-}
-
-/* Style the navigation wrapper */
-.nav-wrapper {
-  display: none; /* Hide by default */
-  position: absolute;
-  top: 100%; /* Below the header */
-  left: 0;
-  right: 0;
-  background-color: #FDFDFD;
-  border-top: 1px solid #EEEEEE;
-  z-index: 100;
-}
-
-.nav-wrapper.is-open {
-  display: block; /* Show when open */
-}
-/* Class to prevent scrolling when mobile menu is open */
-body.nav-open {
-  /* Optional: Prevent background scroll */
-  /* overflow: hidden; */ /* Be careful, can cause layout shifts */
-}
-
-/* === Site Brand (Top-Left Name) Styles === */
-
-.site-brand {
-   /* position: fixed; */ /* REMOVE */
-   /* top: 0; */ /* REMOVE */
-   /* left: 0; */ /* REMOVE */
-   /* z-index: 10; */ /* REMOVE */
-   padding: 0; /* Remove old padding */
-}
-.site-brand a { /* Keep styling */
-  color: #212121;
-  text-decoration: none;
-  font-weight: 600;
-  font-size: 1.1em;
-  transition: color 0.2s ease-in-out;
-}
-.site-brand a:hover {
-  color: #E53935;
-}
-
-/* === New Site Header Styles === */
-.site-header {
-  background-color: #FDFDFD; /* Or #FFFFFF */
-  border-bottom: 1px solid #EEEEEE;
-  position: fixed; /* Fix header to top */
-  top: 0;
-  left: 0;
-  width: 100%;
-  z-index: 100; /* Ensure header is above other elements */
-}
-
-.site-header-content {
-  /* Center content and space out brand/nav */
-  max-width: 1100px; /* Or your preferred content width */
-  margin: 0 auto;
-  padding: 1em 2em; /* Vertical and Horizontal padding */
-  display: flex;
-  justify-content: space-between; /* Push brand left, nav right */
-  align-items: center;
-  min-height: 3em; /* Ensure minimum height, adjust as needed */
-}
-
-/* Call to Action Button Styling */
-.cta-button {
-  display: inline-block;
-  margin-top: 1.5em;
-  padding: 0.8em 1.5em;
-  background-color: #E53935; /* Red accent */
-  color: #fff; /* White text */
-  font-weight: 600;
-  border-radius: 4px;
-  text-decoration: none;
-  transition: background-color 0.2s ease;
-}
-
-.cta-button:hover {
-  background-color: #c62828; /* Slightly darker red on hover */
-  color: #fff;
-  text-decoration: none;
-}
-
-/*Post Image Sizing*/
-
-.post-main-image {
-  max-width: 100%; /* Responsive image */
-  height: auto; /* Maintain aspect ratio */
-  border-radius: 8px; /* Optional: rounded corners */
-  margin-bottom: 1.5em; /* Space below image */
-}
-
-/* === Contact Form Styles === */
-
-.contact-email a {
-  color: #E53935; /* Red accent for email link */
-  font-weight: 600;
-  word-break: break-all; /* Prevent long emails overflowing */
-}
-.contact-email a:hover {
-  text-decoration: underline;
-}
-
-.contact-form {
-  margin-top: 1.5em;
-}
-
-.contact-form .form-group {
-  margin-bottom: 1.5em; /* Space between form fields */
-}
-
-.contact-form label {
-  display: block; /* Place label above input */
-  margin-bottom: 0.5em;
-  font-weight: 600;
-  font-size: 0.9em;
-}
-
-.contact-form input[type="text"],
-.contact-form input[type="email"],
-.contact-form textarea {
-  width: 100%; /* Make inputs full width of container */
-  padding: 0.8em 1em;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  font-size: 1em;
-  font-family: inherit; /* Use the site's font */
-  box-sizing: border-box; /* Include padding/border in width */
-}
-
-.contact-form textarea {
-  resize: vertical; /* Allow vertical resize only */
-}
-
-/* Use the existing button style */
-.contact-form button[type="submit"] {
-  /* Assuming you have .cta-button styles defined */
-  /* If not, add styles similar to the landing page button */
-  margin-top: 0; /* Remove extra margin if reusing .cta-button */
-}
-
-/* === Experience Section Styles === */
-
-.experience-section {
-  margin-top: 4em; /* Add space above the section */
-  margin-bottom: 4em; /* Add space below the section */
-}
-
-.experience-section h2 {
-  margin-bottom: 1.5em; /* Space below the heading */
-  font-weight: 700;
-}
-
-.experience-card {
-  background-color: #fff; /* White background for the card */
-  border: 1px solid #eee; /* Light border */
-  border-radius: 6px; /* Rounded corners */
-  padding: 1.5em 2em; /* Padding inside the card */
-  margin-bottom: 2em; /* Space between cards */
-  box-shadow: 0 2px 5px rgba(0,0,0,0.05); /* Subtle shadow */
-}
-
-.experience-card h3 {
-  margin-top: 0;
-  margin-bottom: 0.25em;
-  color: #212121; /* Dark heading color */
-}
-
-.experience-company {
-  font-size: 0.95em;
-  font-weight: 600;
-  color: #6c757d; /* Gray for company/type */
-  margin-top: 0;
-  margin-bottom: 1em;
-}
-
-.experience-details {
-  padding-left: 1.2em; /* Indent bullet points */
-  margin-top: 0;
-  margin-bottom: 0;
-  font-size: 0.95em;
-  line-height: 1.7;
-}
-
-.experience-details li {
-  margin-bottom: 0.5em; /* Space between bullet points */
-}
-
-/* === Individual Project Page Styles (from project.njk) === */
-
-.project-main-image {
+/* --- Single Post/Project Page Styles --- */
+.post-main-image, /* Class for single post image */
+.project-main-image { /* Class for single project image */
   max-width: 100%;
   height: auto;
+  border-radius: 8px;
   margin-bottom: 1.5em;
-  border: 1px solid #eee;
-  border-radius: 8px; /* Added consistency with post image */
+  /* border: 1px solid #eee; */ /* Optional border */
 }
 
+/* Specific to project page meta box */
 .project-meta {
   background-color: #f8f9fa;
   padding: 1em 1.5em;
@@ -810,306 +593,275 @@ body.nav-open {
   margin: 0.5em 0;
 }
 
-.project-link {
+.project-link { /* Live/Repo links */
   display: inline-block;
   margin-right: 1em;
   font-weight: 600;
   color: #E53935;
 }
-
 .project-link:hover {
   text-decoration: underline;
 }
 
-/* Style for the <hr> in project.njk */
-.project-full hr {
-  border: 0;
-  height: 1px;
-  background-color: #eee;
-  margin: 2em 0;
-}
-
-/* Style for the main content div in project.njk */
 .project-content {
-  /* Add any specific styles for the project content area if needed */
-  /* For example, line-height, etc. */
+  /* Styles for the main markdown content area of a project */
 }
 
-/* === WEB VIEW === */
-@media (min-width: 769px) {
-  .nav-wrapper {
-    display: block; /* Ensure the nav is visible on larger screens */
-    position: static; /* Reset position for desktop */
-    background-color: transparent; /* Remove background for desktop */
-    border: none; /* Remove borders for desktop */
-    box-shadow: none; /* Remove shadow for desktop */
-  }
-
-  nav {
-    display: flex; /* Use flexbox for horizontal layout */
-    justify-content: flex-end; /* Align links to the right */
-    gap: 1em; /* Add spacing between links */
-  }
-
-  nav a {
-    display: inline-block; /* Ensure links are inline */
-    padding: 0.5em 1em; /* Add padding for clickable area */
-    font-size: 1em; /* Adjust font size */
-    color: #212121; /* Default text color */
-  }
-
-  .menu-toggle {
-    display: none; /* Hide the hamburger menu on desktop */
-  }
+/* --- Contact Page --- */
+.contact-email a {
+  color: #E53935;
+  font-weight: 600;
+  word-break: break-all;
+}
+.contact-email a:hover {
+  text-decoration: underline;
 }
 
-/* === MOBILE VIEW === */
-/* === Media Queries for Responsiveness === */
+.contact-form {
+  margin-top: 1.5em;
+}
 
-@media (max-width: 768px) { /* Styles for screens 768px wide or smaller */
-  /* --- General Mobile Styles --- */
-  *,
-*::before,
-*::after {
+.contact-form .form-group {
+  margin-bottom: 1.5em;
+}
+
+.contact-form label {
+  display: block;
+  margin-bottom: 0.5em;
+  font-weight: 600;
+  font-size: 0.9em;
+}
+
+.contact-form input[type="text"],
+.contact-form input[type="email"],
+.contact-form textarea {
+  width: 100%;
+  padding: 0.8em 1em;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 1em;
+  font-family: inherit;
   box-sizing: border-box;
 }
 
-html, body {
-  overflow-x: hidden;
+.contact-form textarea {
+  resize: vertical;
 }
 
-body {
-  word-wrap: break-word; /* Deprecated but widely supported */
-  overflow-wrap: break-word; /* Standard property */
+/* Uses .cta-button */
+.contact-form button[type="submit"] {
+  margin-top: 0; /* Remove extra top margin if reusing button */
 }
-  /* Ensure no horizontal scrolling */
-  body, main {
-    overflow-x: hidden;
+
+/* --- About Page: Experience Section --- */
+.experience-section h2 {
+  margin-bottom: 1.5em;
+}
+
+.experience-card {
+  background-color: #fff;
+  border: 1px solid #eee;
+  border-radius: 6px;
+  padding: 1.5em 2em;
+  margin-bottom: 2em;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+
+.experience-card h3 {
+  margin-top: 0;
+  margin-bottom: 0.25em;
+}
+
+.experience-company {
+  font-size: 0.95em;
+  font-weight: 600;
+  color: #6c757d;
+  margin-top: 0;
+  margin-bottom: 1em;
+}
+
+.experience-details {
+  padding-left: 1.2em; /* Indent list */
+  margin-top: 0;
+  margin-bottom: 0;
+  font-size: 0.95em;
+  line-height: 1.7;
+}
+
+.experience-details li {
+  margin-bottom: 0.5em;
+}
+
+
+/* ==========================================================================
+   7. Utility Classes (e.g., Buttons)
+   ========================================================================== */
+
+.cta-button {
+  display: inline-block;
+  /* margin-top: 1.5em; Removed default top margin */
+  padding: 0.8em 1.5em;
+  background-color: #E53935; /* Red accent */
+  color: #fff; /* White text */
+  font-weight: 600;
+  border-radius: 4px;
+  text-decoration: none;
+  border: none; /* Ensure no default border */
+  cursor: pointer; /* Indicate clickable */
+  transition: background-color 0.2s ease;
+}
+
+.cta-button:hover {
+  background-color: #c62828; /* Darker red */
+  color: #fff;
+  text-decoration: none;
+}
+
+
+/* ==========================================================================
+   8. Media Queries for Responsiveness
+   ========================================================================== */
+
+/* --- Tablet & Larger (Desktop First Approach - Styles outside queries apply) --- */
+@media (min-width: 769px) {
+  /* Styles specific to larger screens if needed */
+  /* Example: Ensuring mobile nav wrapper is definitely hidden */
+   .nav-wrapper {
+       display: block !important; /* Override potential inline styles from JS */
+       position: static;
+       background: transparent;
+       border: none;
+       box-shadow: none;
+       padding: 0;
+   }
+   nav {
+       display: flex; /* Ensure flex for desktop nav layout */
+   }
+}
+
+
+/* --- Mobile View (Max-width 768px) --- */
+@media (max-width: 768px) {
+
+  /* --- Layout Adjustments --- */
+  .sidebar {
+    display: none; /* Hide sidebar */
   }
 
-  /* Remove negative margins or excessive padding */
   .main-content-area {
     margin-left: 0; /* Remove sidebar offset */
-    padding: 1.5em; /* Adjust padding */
+    /* padding-top: 60px; Keep header offset */
   }
 
-  /* --- Sidebar --- */
-  .sidebar {
-    display: none; /* Hide the sidebar completely */
-  }
-
-  /* --- Main Content Area --- */
-  .main-content-area {
-    margin-left: 0; /* Remove the space left for the sidebar */
-    padding-top: 60px; /* Keep padding for fixed header */
-    /* Ensure it still takes full height */
-    min-height: calc(100vh - 60px);
-  }
-
-  /* --- Header --- */
+  /* Header Content Alignment */
   .site-header-content {
-    flex-direction: column; /* Stack brand and nav vertically */
-    align-items: flex-start; /* Align items to the left */
-    padding: 0.75em 1em; /* Reduce padding */
+    padding: 0.75em 1.5em; /* Adjust padding */
+    /* Keep flex row, space-between from defaults */
   }
 
-  .site-brand {
-    margin-bottom: 0.75em; /* Add space below brand when stacked */
-  }
-
-  nav {
-    /* Optional: Center nav links or adjust spacing */
-    width: 100%; /* Make nav take full width */
-    display: flex;
-    justify-content: space-around; /* Example: space out links */
-    flex-wrap: wrap; /* Allow links to wrap if needed */
-  }
-
-  nav a {
-    margin-left: 0; /* Remove left margin */
-    margin-right: 1em; /* Add some right margin */
-    margin-bottom: 0.5em; /* Add space below links if they wrap */
-  }
-
-  /* --- Adjust Main Content Padding --- */
+  /* --- Main Content Padding --- */
   .main-content-area main {
     padding: 2em 1.5em; /* Reduce horizontal padding */
   }
 
   /* --- Footer Padding --- */
    .main-content-area footer {
-     padding: 1em 1.5em; /* Reduce horizontal padding */
+     padding: 1em 1.5em;
    }
 
-   /* --- Stack Two-Column Layouts --- */
+  /* --- Stacking Two-Column Layouts --- */
   .intro-section,
   .featured-project-item,
   .post-preview {
-    flex-direction: column; /* Stack items vertically */
-    gap: 1.5em; /* Adjust gap for vertical stacking */
-    align-items: flex-start; /* Align items to the start (left) */
+    flex-direction: column;
+    gap: 1.5em;
   }
 
-  /* Adjust image containers in stacked layouts */
+  /* Image containers in stacked layouts */
   .intro-image,
   .featured-project-item .preview-thumbnail,
   .post-preview .preview-thumbnail {
-    flex-basis: auto; /* Reset flex-basis */
-    width: 100%; /* Allow image container to take full width */
-    max-width: 350px; /* Optional: Limit max width of images on mobile */
-    margin: 0 auto 1em auto; /* Center image and add bottom margin */
-    order: -1; /* Optional: Move image above text on mobile */
+    flex-basis: auto;
+    width: 100%;
+    max-width: 100%; /* Ensure full width */
+    margin: 0 auto 1em auto; /* Center image, add bottom margin */
+    order: -1; /* Move image above text by default */
   }
-  /* Specific override for intro section if you want image below text */
+  /* Keep intro image below text */
   .intro-section .intro-image {
-      order: 0; /* Reset order for intro section */
-  }
-
-  .intro-image,
-  .featured-project-item .preview-thumbnail,
-  .post-preview .preview-thumbnail {
-    width: 100%; /* Ensure images take full width */
-    max-width: 100%; /* Prevent overflow */
-    margin: 0 auto; /* Center images */
+      order: 0;
   }
 
   /* Ensure text content takes full width */
   .intro-text,
   .featured-project-item .preview-content,
   .post-preview .preview-content {
-    width: 100%; /* Ensure text takes full width */
+    width: 100%;
   }
 
-  /* --- Adjust Project Grid (Portfolio Page) --- */
+  /* --- Project Grid (Portfolio Page) --- */
   .project-list {
-    gap: 1.5em; /* Slightly reduce gap */
-    /* Remove max-width if it was set specifically on the list for desktop */
-    /* max-width: none; */
-    /* Remove margin auto if it was set specifically on the list */
-    /* margin-left: 0; margin-right: 0; */
+    gap: 1.5em;
+    max-width: none; /* Remove desktop max-width */
+    margin-left: 0;
+    margin-right: 0;
   }
   .project-preview {
-    flex-basis: 100%; /* Make each project card take full width */
-    /* Remove calc() basis if it was used */
+    flex-basis: 100%; /* Full width cards */
   }
 
-  /* --- Adjust Font Sizes (Optional but recommended) --- */
-  h1 { font-size: 1.8em; } /* Reduce h1 size */
-  h2, .intro-text .intro-name { font-size: 1.5em; } /* Reduce h2 and intro name size */
-  h3 { font-size: 1.25em; } /* Reduce h3 size */
+  /* --- Typography Adjustments --- */
+  h1 { font-size: 1.8em; }
+  h2, .intro-text .intro-name { font-size: 1.5em; }
+  h3 { font-size: 1.25em; }
 
-  /* --- Handle Potential Long Words/Overflow --- */
-  body { /* Apply globally or to specific containers like 'main' */
-    word-wrap: break-word; /* Deprecated but widely supported */
-    overflow-wrap: break-word; /* Standard property */
-    /* Prevent accidental horizontal scroll on body */
-    overflow-x: hidden;
-  }
-  main {
-      /* Ensure main content doesn't cause horizontal scroll */
-      overflow-x: hidden;
-  }
-
-  /* Double-check images */
-  img {
-    max-width: 100%; /* Never wider than container */
-    height: auto;    /* Maintain aspect ratio */
-    display: block;  /* Prevents extra bottom space */
-    box-sizing: border-box; /* Include border/padding in width */
-  }
-
-  /* --- Ensure Image Containers Don't Force Overflow --- */
-  .intro-image,
-  .featured-project-item .preview-thumbnail,
-  .post-preview .preview-thumbnail,
-  .project-preview-thumbnail,
-  .post-main-image, /* Class for single post image */
-  .project-main-image { /* Class for single project image */
-    width: 100%; /* Take full available width */
-    max-width: 100%; /* Override any desktop max-widths */
-    flex-basis: auto; /* Reset flex basis */
-    margin-left: auto; /* Center if needed */
-    margin-right: auto; /* Center if needed */
-    /* Remove fixed heights if they exist, let 'height: auto' on img control it */
-    height: auto;
-  }
-
-  /* Re-apply overflow hidden as a safety net */
-  body, main {
-    overflow-x: hidden;
-  }
-
-  /* --- Header Adjustments for Hamburger --- */
-  .site-header-content {
-    flex-direction: row; /* Keep brand and button side-by-side */
-    justify-content: space-between; /* Push brand left, button right */
-    align-items: center;
-    /* Remove vertical stacking styles if previously added */
-    /* padding: 0.75em 1.5em; */ /* Keep padding */
-  }
-
-  .site-brand {
-    margin-bottom: 0; /* Remove bottom margin */
-  }
-
-  /* --- Hamburger Menu Display --- */
+  /* --- Hamburger Menu --- */
   .menu-toggle {
-    display: block; /* Show the button on mobile */
-    z-index: 101; /* Ensure button is above menu */
+    display: block; /* Show hamburger */
+    z-index: 101; /* Above menu */
   }
 
-  /* --- Mobile Navigation Menu Styling --- */
+  /* Hide Desktop Nav Links */
+   .site-header-content nav {
+       display: none; /* Hide the inline nav links */
+   }
+
+  /* Mobile Navigation Menu Styling */
   .nav-wrapper {
-    display: none; /* Hide nav wrapper by default */
-    position: absolute; /* Position relative to header */
-    top: 100%; /* Position below the header */
-    left: 0;
-    right: 0;
-    background-color: #FDFDFD; /* Match header background */
-    border-top: 1px solid #EEEEEE;
-    border-bottom: 1px solid #EEEEEE;
-    padding: 1em 0; /* Vertical padding */
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1); /* Add shadow */
-    z-index: 100; /* Below toggle button but above content */
+      /* display: none; is default state */
+      padding: 1em 0; /* Vertical padding inside wrapper */
+      /* Other styles (.is-open, position, background, etc. are defined outside query) */
   }
 
-  .nav-wrapper.is-open {
-    display: block; /* Show the menu when toggled */
-  }
-
-  /* Reset nav flex styles from desktop/previous mobile attempt */
   .nav-wrapper nav {
-    width: auto;
-    display: block; /* Stack links vertically */
-    justify-content: flex-start;
-    flex-wrap: nowrap;
+    display: block; /* Override desktop flex */
+    width: 100%; /* Full width */
   }
 
   /* Style individual links in mobile menu */
   .nav-wrapper nav a {
-    display: block; /* Make links full width */
-    padding: 0.75em 1.5em; /* Padding for touch targets */
+    display: block;
+    padding: 0.75em 1.5em;
     margin: 0; /* Reset margins */
-    border-bottom: 1px solid #f0f0f0; /* Separator */
-    font-size: 1em; /* Slightly larger font */
+    border-bottom: 1px solid #f0f0f0;
+    font-size: 1em;
+    color: #212121; /* Ensure default color */
   }
   .nav-wrapper nav a:last-child {
-    border-bottom: none; /* No border on last item */
+    border-bottom: none;
   }
 
-  /* Keep active state styling */
+  /* Active/Hover state for mobile menu */
   .nav-wrapper nav a.active {
-    background-color: #f8f9fa; /* Slight background for active */
+    background-color: #f8f9fa;
   }
   .nav-wrapper nav a.active .nav-number,
   .nav-wrapper nav a.active .nav-text {
      color: #E53935; /* Keep red accent */
   }
-
-  /* Remove hover underline in mobile menu if desired */
   .nav-wrapper nav a:hover {
     text-decoration: none;
-    background-color: #f0f0f0; /* Hover background */
+    background-color: #f0f0f0;
   }
   .nav-wrapper nav a:hover .nav-number,
   .nav-wrapper nav a:hover .nav-text {
