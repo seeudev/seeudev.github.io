@@ -278,12 +278,6 @@ nav a.active:hover .nav-number {
   display: block; /* Show when active */
 }
 
-/* Prevent body scroll when mobile menu is open */
-body.nav-open {
-  /* Optional: overflow: hidden; Consider potential layout shifts */
-}
-
-
 /* ==========================================================================
    5. Sidebar Components (Social Links)
    ========================================================================== */
@@ -394,10 +388,6 @@ body.nav-open {
   margin-bottom: 1.5em;
 }
 
-.featured-project-list {
-  /* Container for the items */
-}
-
 .featured-project-item {
   display: flex;
   justify-content: space-between;
@@ -433,29 +423,51 @@ body.nav-open {
   list-style: none;
   padding: 0;
   margin: 0;
+  /* Removed flex/grid properties if any */
 }
 
+/* Apply card styling to blog posts */
 .post-preview {
+  /* Copied/adapted from .project-preview */
+  border: 1px solid #eee;
+  border-radius: 6px;
+  overflow: hidden;
+  background-color: #fff;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.05);
   display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  gap: 2em;
-  margin-bottom: 3em;
-  padding-bottom: 1.5em;
-  border-bottom: 1px solid #eee;
+  flex-direction: row; /* Image on the right */
+  align-items: flex-start; /* Align items at the top */
+  margin-bottom: 2em; /* Spacing between cards */
+  height: auto; /* Let content determine height */
+  min-height: 150px; /* Add a minimum height */
 }
 
-.preview-content {
-  flex-grow: 1;
+/* Style blog post thumbnail */
+.post-preview .preview-thumbnail {
+  flex-shrink: 0; /* Prevent shrinking */
+  flex-basis: 200px; /* Set a base width for the image container */
+  align-self: stretch; /* Make container stretch to card height */
+  display: flex; /* Use flex to center image */
+  align-items: center; /* Vertically center */
+  justify-content: center; /* Horizontally center */
+  padding: 1em; /* Add some padding around the image */
 }
 
-.preview-thumbnail {
-  flex-basis: 150px; /* Smaller thumbnail */
-  flex-shrink: 0;
+.post-preview .preview-thumbnail img {
+  object-fit: contain; /* Show full image */
+  max-width: 100%; /* Ensure image doesn't overflow container */
+  max-height: 100%; /* Ensure image doesn't overflow container */
+  height: auto; /* Maintain aspect ratio */
+  border-radius: 4px; /* Add slight rounding */
 }
 
-.preview-thumbnail img {
-  border-radius: 4px;
+/* Style blog post content area */
+.post-preview .preview-content {
+  padding: 1em 1.5em;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1; /* Allow content to fill card height */
+  justify-content: space-between; /* Space out title/meta and link */
 }
 
 .post-preview h3 {
@@ -478,8 +490,16 @@ body.nav-open {
   margin-bottom: 1em;
 }
 
+/* Ensure excerpt paragraph grows but doesn't push link */
+.post-preview .preview-content p:not(:last-child) {
+    flex-grow: 1; /* Allow excerpt to take space */
+    margin-bottom: 1em; /* Space before link */
+}
+
 .post-preview p:last-child { /* Targets the Read More link paragraph */
+  margin-top: auto; /* Push link to bottom */
   margin-bottom: 0;
+  flex-grow: 0; /* Prevent link paragraph from growing */
 }
 .post-preview p:last-child a { /* Style 'Read More' link */
    color: #E53935;
@@ -491,11 +511,12 @@ body.nav-open {
 
 /* --- Portfolio Index: Project Grid --- */
 .project-list {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 2em;
-  max-width: 1100px; /* Wider container for grid */
-  margin: 2em auto; /* Center grid */
+  /* display: flex; */ /* Changed from flex */
+  /* flex-wrap: wrap; */ /* Removed */
+  /* gap: 2em; */ /* Removed */
+  display: block; /* Stack cards vertically */
+  max-width: 800px; /* Adjust max-width for single column */
+  margin: 2em auto; /* Center list */
   padding: 0;
 }
 
@@ -507,15 +528,14 @@ body.nav-open {
   box-shadow: 0 2px 5px rgba(0,0,0,0.05);
   display: flex;
   flex-direction: column;
-  flex-grow: 1;
-  flex-basis: 300px; /* Ideal width before wrapping */
-  /* Consider flex-basis: calc(50% - 1em); for two columns */
   box-sizing: border-box;
+  margin-bottom: 2em; /* Add spacing between stacked cards */
+  height: auto; /* Let content determine height */
 }
 
 .project-preview-thumbnail {
   width: 100%;
-  height: 180px; /* Fixed height for consistency */
+  height: 250px; /* Fixed height for consistency */
 }
 
 .project-preview-thumbnail img {
@@ -601,10 +621,6 @@ body.nav-open {
 }
 .project-link:hover {
   text-decoration: underline;
-}
-
-.project-content {
-  /* Styles for the main markdown content area of a project */
 }
 
 /* --- Contact Page --- */
@@ -771,16 +787,14 @@ body.nav-open {
 
   /* --- Stacking Two-Column Layouts --- */
   .intro-section,
-  .featured-project-item,
-  .post-preview {
+  .featured-project-item {
     flex-direction: column;
     gap: 1.5em;
   }
 
   /* Image containers in stacked layouts */
   .intro-image,
-  .featured-project-item .preview-thumbnail,
-  .post-preview .preview-thumbnail {
+  .featured-project-item .preview-thumbnail {
     flex-basis: auto;
     width: 100%;
     max-width: 100%; /* Ensure full width */
@@ -794,26 +808,49 @@ body.nav-open {
 
   /* Ensure text content takes full width */
   .intro-text,
-  .featured-project-item .preview-content,
-  .post-preview .preview-content {
+  .featured-project-item .preview-content {
     width: 100%;
   }
 
   /* --- Project Grid (Portfolio Page) --- */
   .project-list {
-    gap: 1.5em;
     max-width: none; /* Remove desktop max-width */
     margin-left: 0;
     margin-right: 0;
+    /* display: block; already set */
   }
   .project-preview {
-    flex-basis: 100%; /* Full width cards */
+    margin-bottom: 1.5em; /* Adjust mobile spacing */
+    height: auto; /* Let height be auto on mobile? Or keep fixed? Let's try auto */
+  }
+  .project-preview-thumbnail {
+      height: 200px; /* Adjust thumbnail height for mobile */
   }
 
-  /* --- Typography Adjustments --- */
-  h1 { font-size: 1.8em; }
-  h2, .intro-text .intro-name { font-size: 1.5em; }
-  h3 { font-size: 1.25em; }
+  /* --- Blog Card Adjustments --- */
+   .post-preview {
+       flex-direction: column; /* Stack vertically on mobile */
+       margin-bottom: 1.5em; /* Adjust mobile spacing */
+       height: auto; /* Let height be auto on mobile */
+   }
+   .post-preview .preview-thumbnail {
+       flex-basis: auto; /* Reset basis */
+       width: 100%; /* Full width */
+       max-height: 200px; /* Limit height on mobile */
+       padding: 0; /* Remove padding */
+       order: -1; /* Image on top on mobile */
+       align-self: auto; /* Reset stretch */
+   }
+   .post-preview .preview-thumbnail img {
+       object-fit: cover; /* Cover might look better on mobile */
+       border-radius: 0; /* Remove rounding for top image */
+       width: 100%;
+       height: 100%;
+       max-height: 200px;
+   }
+   .post-preview .preview-content {
+       /* Content takes full width automatically */
+   }
 
   /* --- Hamburger Menu --- */
   .menu-toggle {
