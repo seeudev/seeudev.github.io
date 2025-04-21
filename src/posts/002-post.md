@@ -1,5 +1,5 @@
 ---
-title: Website Creation Success!
+title: Finals Month
 date: 2025-04-22  # Use YYYY-MM-DD format
 tags: post        # This tag identifies it as a blog post for Eleventy
 layout: post.njk  # Use the specific post layout we'll create next
