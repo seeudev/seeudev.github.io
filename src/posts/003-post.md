@@ -9,7 +9,7 @@ image: /images/003-post-image.jpg # Path to blog image
 ---
 
 ## The School Year is finally over!
-The school year is officially a wrap, and honestly, the last month felt like a marathon sprint to the finish line. While there are still a few tiny loose ends to tie up, nothing worth rambling about here. Let's dive straight into the glorious chaos that was May.
+The school year is officially a wrap, and honestly, the last month felt like a marathon sprint to the finish line. While there are still a few tiny loose ends to tie up, nothing worth rambling about here.
 <br>
 <br>
 It all kicked off with the frantic final push for our Object-Oriented Programming 2 project: EquinoxGame. Picture this: a space invader-esque game built from scratch in Java using Swing. Now, this was supposed to be a semester-long endeavor, but naturally, we decided to kick things into high gear a mere two weeks before the deadline. Cue the epic crunch time, fueled by copious amounts of caffeine and sheer willpower.
