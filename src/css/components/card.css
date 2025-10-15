@@ -1,0 +1,267 @@
+/* ==========================================================================
+   CARD COMPONENT
+   Description: Reusable card styles for project and post previews
+   Used by: Blog index, Portfolio index, Homepage featured projects
+   ========================================================================== */
+
+/* ==========================================================================
+   BASE CARD STYLES
+   ========================================================================== */
+
+.card-base {
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  background-color: var(--color-white);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  transition: box-shadow var(--transition-fast);
+}
+
+.card-base:hover {
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* ==========================================================================
+   POST PREVIEW CARD (Blog)
+   ========================================================================== */
+
+.post-preview {
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  background-color: var(--color-white);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  margin-bottom: var(--spacing-xl);
+  height: auto;
+  min-height: 150px;
+}
+
+.post-preview .preview-thumbnail {
+  flex-shrink: 0;
+  flex-basis: 200px;
+  align-self: stretch;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--spacing-md);
+}
+
+.post-preview .preview-thumbnail img {
+  object-fit: contain;
+  max-width: 100%;
+  max-height: 100%;
+  height: auto;
+  border-radius: var(--radius-md);
+}
+
+.post-preview .preview-content {
+  padding: var(--spacing-md) var(--spacing-lg);
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  justify-content: space-between;
+}
+
+.post-preview h3 {
+  margin-top: 0;
+  margin-bottom: 0.25em;
+}
+
+.post-preview h3 a {
+  color: var(--color-text);
+  text-decoration: none;
+}
+
+.post-preview h3 a:hover {
+  color: var(--color-primary);
+  text-decoration: underline;
+}
+
+.post-meta {
+  color: var(--color-text-muted);
+  font-size: 0.9em;
+  margin-top: 0;
+  margin-bottom: var(--spacing-md);
+}
+
+.post-preview .preview-content p:not(:last-child) {
+  flex-grow: 1;
+  margin-bottom: var(--spacing-md);
+}
+
+.post-preview p:last-child {
+  margin-top: auto;
+  margin-bottom: 0;
+  flex-grow: 0;
+}
+
+.post-preview p:last-child a {
+  color: var(--color-primary);
+  font-weight: 600;
+}
+
+.post-preview p:last-child a:hover {
+  text-decoration: underline;
+}
+
+/* ==========================================================================
+   PROJECT PREVIEW CARD (Portfolio)
+   ========================================================================== */
+
+.project-preview {
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  background-color: var(--color-white);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  margin-bottom: var(--spacing-xl);
+  height: auto;
+}
+
+.project-preview-thumbnail {
+  width: 100%;
+  height: 250px;
+}
+
+.project-preview-thumbnail img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.project-preview-content {
+  padding: var(--spacing-md) var(--spacing-lg);
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.project-preview-content h3 {
+  margin-top: 0;
+  margin-bottom: var(--spacing-sm);
+}
+
+.project-preview-content h3 a {
+  color: var(--color-text);
+  text-decoration: none;
+}
+
+.project-preview-content h3 a:hover {
+  color: var(--color-primary);
+  text-decoration: underline;
+}
+
+.project-preview-content p {
+  font-size: 0.95em;
+  flex-grow: 1;
+  margin-bottom: var(--spacing-md);
+}
+
+.project-preview-content .project-tech {
+  font-size: 0.85em;
+  color: var(--color-text-muted);
+  margin-top: var(--spacing-md);
+  flex-grow: 0;
+}
+
+.project-preview-content p:last-child {
+  margin-top: auto;
+  margin-bottom: 0;
+  flex-grow: 0;
+}
+
+.project-preview-content p:last-child a {
+  color: var(--color-primary);
+  font-weight: 600;
+}
+
+.project-preview-content p:last-child a:hover {
+  text-decoration: underline;
+}
+
+/* ==========================================================================
+   EXPERIENCE CARD (About Page)
+   ========================================================================== */
+
+.experience-card {
+  background-color: var(--color-white);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-lg) var(--spacing-xl);
+  margin-bottom: var(--spacing-xl);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+}
+
+.experience-card h3 {
+  margin-top: 0;
+  margin-bottom: 0.25em;
+}
+
+.experience-company {
+  font-size: 0.95em;
+  font-weight: 600;
+  color: var(--color-text-muted);
+  margin-top: 0;
+  margin-bottom: var(--spacing-md);
+}
+
+.experience-details {
+  padding-left: 1.2em;
+  margin-top: 0;
+  margin-bottom: 0;
+  font-size: 0.95em;
+  line-height: 1.7;
+}
+
+.experience-details li {
+  margin-bottom: var(--spacing-sm);
+}
+
+/* ==========================================================================
+   RESPONSIVE CARDS (Mobile)
+   ========================================================================== */
+
+@media (max-width: 768px) {
+  /* Post cards stack vertically */
+  .post-preview {
+    flex-direction: column;
+    margin-bottom: var(--spacing-lg);
+    height: auto;
+  }
+
+  .post-preview .preview-thumbnail {
+    flex-basis: auto;
+    width: 100%;
+    max-height: 200px;
+    padding: 0;
+    order: -1;
+    align-self: auto;
+  }
+
+  .post-preview .preview-thumbnail img {
+    object-fit: cover;
+    border-radius: 0;
+    width: 100%;
+    height: 100%;
+    max-height: 200px;
+  }
+
+  /* Project cards mobile adjustments */
+  .project-preview {
+    margin-bottom: var(--spacing-lg);
+    height: auto;
+  }
+
+  .project-preview-thumbnail {
+    height: 200px;
+  }
+}

@@ -1,0 +1,68 @@
+/* ==========================================================================
+   CONTACT PAGE STYLES
+   Description: Contact page form and content styles
+   Used by: contact.md (contact page)
+   ========================================================================== */
+
+/* ==========================================================================
+   CONTACT EMAIL
+   ========================================================================== */
+
+.contact-email a {
+  color: var(--color-primary);
+  font-weight: 600;
+  word-break: break-all;
+}
+
+.contact-email a:hover {
+  text-decoration: underline;
+}
+
+/* ==========================================================================
+   CONTACT FORM
+   ========================================================================== */
+
+.contact-form {
+  margin-top: var(--spacing-lg);
+}
+
+.contact-form .form-group {
+  margin-bottom: var(--spacing-lg);
+}
+
+.contact-form label {
+  display: block;
+  margin-bottom: var(--spacing-sm);
+  font-weight: 600;
+  font-size: 0.9em;
+  color: var(--color-text);
+}
+
+.contact-form input[type="text"],
+.contact-form input[type="email"],
+.contact-form textarea {
+  width: 100%;
+  padding: 0.8em var(--spacing-md);
+  border: 1px solid #ccc;
+  border-radius: var(--radius-md);
+  font-size: 1em;
+  font-family: inherit;
+  box-sizing: border-box;
+  transition: border-color var(--transition-fast);
+}
+
+.contact-form input[type="text"]:focus,
+.contact-form input[type="email"]:focus,
+.contact-form textarea:focus {
+  outline: none;
+  border-color: var(--color-primary);
+}
+
+.contact-form textarea {
+  resize: vertical;
+  min-height: 150px;
+}
+
+.contact-form button[type="submit"] {
+  margin-top: 0;
+}

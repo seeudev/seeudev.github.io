@@ -1,0 +1,185 @@
+/* ==========================================================================
+   NAVBAR (HEADER NAVIGATION) COMPONENT
+   Description: Desktop and mobile navigation styles, hamburger menu
+   Used by: layout.njk (site header)
+   ========================================================================== */
+
+/* ==========================================================================
+   SITE BRAND
+   ========================================================================== */
+
+.site-brand a {
+  color: var(--color-text);
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 1.1em;
+  transition: color var(--transition-fast);
+}
+
+.site-brand a:hover {
+  color: var(--color-primary);
+}
+
+/* ==========================================================================
+   DESKTOP NAVIGATION
+   ========================================================================== */
+
+nav a {
+  margin-left: var(--spacing-xl);
+  font-size: 0.9em;
+  text-decoration: none;
+  color: var(--color-text);
+  display: inline-block;
+}
+
+nav .nav-number {
+  color: var(--color-primary);
+  font-weight: 400;
+  margin-right: 0.3em;
+  font-family: var(--font-mono);
+}
+
+nav .nav-text {
+  font-weight: 600;
+}
+
+/* Navigation Link Hover */
+nav a:hover,
+nav a:hover .nav-number {
+  color: var(--color-primary);
+  text-decoration: none;
+}
+
+/* Active Navigation Link */
+nav a.active .nav-number,
+nav a.active .nav-text {
+  color: var(--color-primary);
+}
+
+nav a.active:hover,
+nav a.active:hover .nav-number {
+  color: var(--color-primary);
+}
+
+/* ==========================================================================
+   HAMBURGER MENU (Mobile Toggle)
+   ========================================================================== */
+
+.menu-toggle {
+  display: none;
+  background: none;
+  border: none;
+  padding: var(--spacing-sm);
+  margin: 0;
+  cursor: pointer;
+  color: var(--color-text);
+}
+
+.menu-toggle svg {
+  display: block;
+  width: 24px;
+  height: 24px;
+}
+
+.menu-toggle:hover {
+  color: var(--color-primary);
+}
+
+/* ==========================================================================
+   MOBILE NAVIGATION
+   ========================================================================== */
+
+.nav-wrapper {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background-color: var(--color-background);
+  border-top: 1px solid var(--color-border);
+  border-bottom: 1px solid var(--color-border);
+  z-index: 100;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.nav-wrapper.is-open {
+  display: block;
+}
+
+/* ==========================================================================
+   RESPONSIVE NAVIGATION
+   ========================================================================== */
+
+/* Desktop: Ensure nav wrapper is visible */
+@media (min-width: 769px) {
+  .nav-wrapper {
+    display: block !important;
+    position: static;
+    background: transparent;
+    border: none;
+    box-shadow: none;
+    padding: 0;
+  }
+  
+  nav {
+    display: flex;
+  }
+}
+
+/* Mobile: Navigation Menu Styles */
+@media (max-width: 768px) {
+  /* Show hamburger menu */
+  .menu-toggle {
+    display: block;
+    z-index: 101;
+  }
+
+  /* Hide desktop nav links */
+  .site-header-content nav {
+    display: none;
+  }
+
+  /* Mobile navigation wrapper */
+  .nav-wrapper {
+    padding: var(--spacing-md) 0;
+  }
+
+  .nav-wrapper nav {
+    display: block;
+    width: 100%;
+  }
+
+  /* Mobile navigation links */
+  .nav-wrapper nav a {
+    display: block;
+    padding: 0.75em var(--spacing-lg);
+    margin: 0;
+    border-bottom: 1px solid var(--color-border-light);
+    font-size: 1em;
+    color: var(--color-text);
+  }
+
+  .nav-wrapper nav a:last-child {
+    border-bottom: none;
+  }
+
+  /* Mobile active/hover states */
+  .nav-wrapper nav a.active {
+    background-color: var(--color-background-alt);
+  }
+
+  .nav-wrapper nav a.active .nav-number,
+  .nav-wrapper nav a.active .nav-text {
+    color: var(--color-primary);
+  }
+
+  .nav-wrapper nav a:hover {
+    text-decoration: none;
+    background-color: var(--color-border-light);
+  }
+
+  .nav-wrapper nav a:hover .nav-number,
+  .nav-wrapper nav a:hover .nav-text {
+    color: var(--color-primary);
+  }
+}

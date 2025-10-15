@@ -1,0 +1,36 @@
+/* ==========================================================================
+   FOOTER COMPONENT
+   Description: Site footer styles
+   Used by: layout.njk (site footer)
+   ========================================================================== */
+
+.main-content-area footer {
+  width: 100%;
+  padding: var(--spacing-lg) var(--spacing-xl);
+  text-align: center;
+  margin-top: auto;
+  border-top: 1px solid var(--color-border);
+  font-size: 0.9em;
+  color: var(--color-text-muted);
+  flex-shrink: 0;
+}
+
+/* Footer Links */
+.main-content-area footer a {
+  color: var(--color-text-muted);
+  text-decoration: underline;
+}
+
+.main-content-area footer a:hover {
+  color: var(--color-primary);
+}
+
+/* ==========================================================================
+   RESPONSIVE FOOTER
+   ========================================================================== */
+
+@media (max-width: 768px) {
+  .main-content-area footer {
+    padding: var(--spacing-md) var(--spacing-lg);
+  }
+}

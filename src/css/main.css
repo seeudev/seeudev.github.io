@@ -1,0 +1,76 @@
+/* ==========================================================================
+   MAIN STYLESHEET
+   Description: Central import file that loads all CSS modules in the correct order
+   Author: seeudev
+   Last Updated: October 16, 2025
+   
+   IMPORT ORDER:
+   1. Base styles (resets, typography, variables)
+   2. Layout (structure, grid, flexbox)
+   3. Components (reusable UI elements)
+   4. Pages (page-specific styles)
+   5. Utilities (helper classes)
+   
+   USAGE:
+   - This file should be linked in layout.njk
+   - All styles are organized by section/component for easy maintenance
+   - CSS variables are defined in base.css for consistent theming
+   
+   MODIFICATION GUIDELINES:
+   - Don't add styles directly to this file
+   - Add new styles to appropriate module files
+   - Maintain the import order to prevent specificity issues
+   - Use CSS variables from base.css for colors, spacing, etc.
+   
+   ========================================================================== */
+
+/* ==========================================================================
+   1. BASE STYLES
+   Global resets, typography, CSS variables, and fundamental styles
+   ========================================================================== */
+@import 'base.css';
+
+/* ==========================================================================
+   2. LAYOUT
+   Core site structure, grid systems, and page scaffolding
+   ========================================================================== */
+@import 'layout.css';
+
+/* ==========================================================================
+   3. COMPONENTS
+   Reusable UI components used across multiple pages
+   ========================================================================== */
+@import 'components/navbar.css';
+@import 'components/sidebar.css';
+@import 'components/footer.css';
+@import 'components/card.css';
+
+/* ==========================================================================
+   4. PAGE-SPECIFIC STYLES
+   Styles unique to individual pages
+   ========================================================================== */
+@import 'pages/home.css';
+@import 'pages/blog.css';
+@import 'pages/portfolio.css';
+@import 'pages/about.css';
+@import 'pages/contact.css';
+
+/* ==========================================================================
+   5. UTILITIES
+   Helper classes, buttons, and utility styles
+   ========================================================================== */
+@import 'utilities.css';
+
+/* ==========================================================================
+   END OF IMPORTS
+   
+   Note: If you need to add custom page-specific styles:
+   1. Create a new file in src/css/pages/
+   2. Import it above in the "Page-Specific Styles" section
+   3. Document the purpose at the top of the new file
+   
+   For new components:
+   1. Create a new file in src/css/components/
+   2. Import it above in the "Components" section
+   3. Follow the existing component structure for consistency
+   ========================================================================== */

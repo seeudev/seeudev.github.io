@@ -1,0 +1,95 @@
+/* ==========================================================================
+   PORTFOLIO PAGE STYLES
+   Description: Portfolio index and individual project page styles
+   Used by: portfolio.md (portfolio index), project.njk (individual projects)
+   ========================================================================== */
+
+/* ==========================================================================
+   PORTFOLIO INDEX (PROJECT LIST)
+   ========================================================================== */
+
+.project-list {
+  display: block;
+  max-width: var(--max-content-width);
+  margin: var(--spacing-xl) auto;
+  padding: 0;
+}
+
+/* Note: Project preview card styles are in components/card.css */
+
+/* ==========================================================================
+   SINGLE PROJECT PAGE
+   ========================================================================== */
+
+.project-main-image {
+  max-width: 100%;
+  height: auto;
+  border-radius: var(--radius-xl);
+  margin-bottom: var(--spacing-lg);
+}
+
+/* Project Meta Box */
+.project-meta {
+  background-color: var(--color-background-alt);
+  padding: var(--spacing-md) var(--spacing-lg);
+  border-radius: var(--radius-md);
+  margin-bottom: var(--spacing-lg);
+  font-size: 0.9em;
+}
+
+.project-meta p {
+  margin: var(--spacing-sm) 0;
+}
+
+.project-meta strong {
+  color: var(--color-text);
+}
+
+/* Project Links (Live/Repo) */
+.project-link {
+  display: inline-block;
+  margin-right: var(--spacing-md);
+  font-weight: 600;
+  color: var(--color-primary);
+}
+
+.project-link:hover {
+  text-decoration: underline;
+}
+
+/* ==========================================================================
+   PROJECT CONTENT STYLING
+   ========================================================================== */
+
+.project-content p {
+  margin-bottom: var(--spacing-lg);
+  line-height: 1.7;
+}
+
+.project-content h2,
+.project-content h3 {
+  margin-top: var(--spacing-xl);
+  margin-bottom: var(--spacing-md);
+}
+
+.project-content ul,
+.project-content ol {
+  margin-bottom: var(--spacing-lg);
+  padding-left: 1.5em;
+}
+
+.project-content li {
+  margin-bottom: var(--spacing-sm);
+}
+
+/* ==========================================================================
+   RESPONSIVE PORTFOLIO
+   ========================================================================== */
+
+@media (max-width: 768px) {
+  .project-list {
+    max-width: none;
+    margin-left: 0;
+    margin-right: 0;
+  }
+}

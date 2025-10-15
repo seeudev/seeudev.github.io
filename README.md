@@ -11,7 +11,7 @@ My static blog and portfolio website built with [Eleventy](https://www.11ty.dev/
 │   ├── post.njk        # Blog post template
 │   └── project.njk     # Project template
 ├── src/                # Source files
-│   ├── css/            # Stylesheets
+│   ├── css/            # Stylesheets (modular organization - see CSS_README.md)
 │   ├── images/         # Image assets
 │   ├── posts/          # Blog posts (Markdown)
 │   ├── projects/       # Portfolio projects (Markdown)
@@ -37,6 +37,19 @@ My static blog and portfolio website built with [Eleventy](https://www.11ty.dev/
 
 - Node.js (v14 or higher recommended)
 - npm or yarn
+
+## CSS Organization
+
+The CSS has been refactored into a modular structure for better maintainability:
+
+- **`src/css/base.css`**: Global styles, resets, typography, CSS variables
+- **`src/css/layout.css`**: Core site structure and layouts
+- **`src/css/components/`**: Reusable UI components (navbar, footer, cards, etc.)
+- **`src/css/pages/`**: Page-specific styles (home, blog, portfolio, etc.)
+- **`src/css/utilities.css`**: Utility classes and helpers
+- **`src/css/main.css`**: Main entry point that imports all modules
+
+📖 **For detailed CSS documentation, see [CSS_README.md](./CSS_README.md)**
 
 ## Templating
 

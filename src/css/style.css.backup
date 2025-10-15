@@ -1,3 +1,25 @@
+/* ============================================================================
+   DEPRECATED: This file has been replaced by a modular CSS architecture
+   ============================================================================
+   
+   Date: October 16, 2025
+   
+   This monolithic style.css file has been refactored into a modular structure
+   for better maintainability and organization. 
+   
+   NEW STRUCTURE:
+   - src/css/main.css (entry point)
+   - src/css/base.css (resets, typography, variables)
+   - src/css/layout.css (structure)
+   - src/css/components/ (navbar, footer, sidebar, cards)
+   - src/css/pages/ (home, blog, portfolio, about, contact)
+   - src/css/utilities.css (helper classes)
+   
+   This backup is kept for reference only.
+   See CSS_README.md for full documentation.
+   
+   ============================================================================ */
+
 /* src/css/style.css */
 
 /* ==========================================================================

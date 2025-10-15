@@ -1,0 +1,30 @@
+/* ==========================================================================
+   ABOUT PAGE STYLES
+   Description: About page styles including experience section
+   Used by: about.md (about page)
+   ========================================================================== */
+
+/* ==========================================================================
+   ABOUT PAGE CONTENT
+   ========================================================================== */
+
+/* General about page typography */
+.about-content p {
+  margin-bottom: var(--spacing-lg);
+  line-height: 1.7;
+}
+
+/* ==========================================================================
+   EXPERIENCE SECTION
+   ========================================================================== */
+
+.experience-section h2 {
+  margin-bottom: var(--spacing-lg);
+}
+
+/* Note: Experience card styles are in components/card.css */
+
+/* Additional experience section specific styles if needed */
+.experience-section {
+  margin-top: var(--spacing-3xl);
+}
