@@ -1,6 +1,6 @@
 ---
 title: GameVault
-date: 2024-12-12
+date: 2025-12-03
 tags: project
 layout: project.njk
 summary: "A game store selling digital keys built with Django, PostgreSQL (Supabase), and vanilla HTML/CSS/JavaScript"

@@ -123,23 +123,42 @@
   display: flex;
   flex-direction: column;
   box-sizing: border-box;
-  margin-bottom: var(--spacing-xl);
-  height: auto;
+  height: 100%;
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.project-preview:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.12);
 }
 
 .project-preview-thumbnail {
   width: 100%;
-  height: 250px;
+  height: 280px;
+  overflow: hidden;
+  background-color: var(--color-background-alt);
+}
+
+.project-preview-thumbnail a {
+  display: block;
+  width: 100%;
+  height: 100%;
 }
 
 .project-preview-thumbnail img {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  object-position: center;
+  transition: transform var(--transition-fast);
+}
+
+.project-preview:hover .project-preview-thumbnail img {
+  transform: scale(1.05);
 }
 
 .project-preview-content {
-  padding: var(--spacing-md) var(--spacing-lg);
+  padding: var(--spacing-lg);
   display: flex;
   flex-direction: column;
   flex-grow: 1;
@@ -148,6 +167,8 @@
 .project-preview-content h3 {
   margin-top: 0;
   margin-bottom: var(--spacing-sm);
+  font-size: 1.25rem;
+  line-height: 1.3;
 }
 
 .project-preview-content h3 a {
@@ -196,14 +217,29 @@
   background-color: var(--color-white);
   border: 1px solid var(--color-border);
   border-radius: var(--radius-lg);
-  padding: var(--spacing-lg) var(--spacing-xl);
-  margin-bottom: var(--spacing-xl);
+  padding: var(--spacing-xl);
+  margin-bottom: var(--spacing-lg);
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+  display: flex;
+  flex-direction: column;
+  min-height: 220px;
+  height: auto;
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.experience-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.experience-card:last-child {
+  margin-bottom: 0;
 }
 
 .experience-card h3 {
   margin-top: 0;
   margin-bottom: 0.25em;
+  font-size: 1.25rem;
 }
 
 .experience-company {
@@ -220,6 +256,7 @@
   margin-bottom: 0;
   font-size: 0.95em;
   line-height: 1.7;
+  flex-grow: 1;
 }
 
 .experience-details li {
@@ -257,11 +294,14 @@
 
   /* Project cards mobile adjustments */
   .project-preview {
-    margin-bottom: var(--spacing-lg);
     height: auto;
   }
 
   .project-preview-thumbnail {
     height: 200px;
+  }
+  
+  .project-preview-content {
+    min-height: auto;
   }
 }

@@ -1,6 +1,6 @@
 ---
 title: Glyzier
-date: 2024-12-12
+date: 2025-12-04
 tags: project
 layout: project.njk
 summary: "An artist portfolio and store platform built with Spring Boot, React, and PostgreSQL"

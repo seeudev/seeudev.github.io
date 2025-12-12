@@ -3,7 +3,8 @@ layout: layout.njk
 title: Contact | seeudev
 ---
 
-## Get In Touch
+<div class="content-container">
+<h2>Get In Touch</h2>
 
 Whether you have a question, a project proposal for web development or video editing, a job opportunity, or just want to connect, I'd love to hear from you! Here are the best ways to reach me:
 
@@ -39,6 +40,7 @@ Alternatively, you can use the form below:
   {# Optional: Add hidden field for spam protection later if needed #}
   <button type="submit" class="cta-button">Send Message</button>
 </form>
+</div>
 {# ---- End Form ---- #}
 
 <br> {# Add some space #}

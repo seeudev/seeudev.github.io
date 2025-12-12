@@ -1,6 +1,6 @@
 ---
 title: EasyReview
-date: 2024-12-12
+date: 2025-04-21
 tags: project
 layout: project.njk
 summary: "A product rating system with role-based access control built with PHP, MySQL, and Docker"

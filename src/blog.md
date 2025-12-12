@@ -3,7 +3,8 @@ layout: layout.njk
 title: Blog | seeudev
 ---
 
-## Latest Posts
+<div class="content-container">
+<h2>Latest Posts</h2>
 
 {% set posts = collections.post | reverse %} {# Get all posts tagged 'post', newest first #}
 
@@ -35,3 +36,4 @@ title: Blog | seeudev
 {% if posts.length == 0 %}
     <p>No posts found yet.</p>
 {% endif %}
+</div>
