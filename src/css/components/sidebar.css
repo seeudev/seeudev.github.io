@@ -18,7 +18,8 @@
   position: fixed;
   left: 0;
   top: var(--header-height);
-  height: calc(100vh - var(--header-height));
+  height: calc(100% - var(--header-height));
+  min-height: calc(100vh - var(--header-height));
 }
 
 /* ==========================================================================
@@ -32,6 +33,8 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  width: 100%;
+  text-align: center;
 }
 
 .social-links li {
@@ -39,9 +42,10 @@
 }
 
 .social-links a {
-  display: inline-block;
+  display: block;
   color: var(--color-text-muted);
   transition: color var(--transition-fast);
+  margin: 0 auto;
 }
 
 .social-links a:hover {
