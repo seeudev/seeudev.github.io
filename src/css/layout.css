@@ -60,6 +60,14 @@
   flex-grow: 1;
 }
 
+/* Centered Content Container (800px) */
+.content-container {
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+}
+
 /* ==========================================================================
    GENERAL SECTION SPACING
    ========================================================================== */

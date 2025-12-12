@@ -3,7 +3,8 @@ layout: layout.njk
 title: Portfolio | seeudev
 ---
 
-## Projects
+<div class="content-container">
+<h2>Projects</h2>
 
 Here are some of the projects I've worked on.
 
@@ -34,3 +35,4 @@ Here are some of the projects I've worked on.
 {% else %}
     <p>No projects found yet.</p>
 {% endif %}
+</div>

@@ -1,0 +1,107 @@
+---
+layout: layout.njk
+title: Christian Harry Pancito 
+permalink: /
+---
+
+<div class="content-container">
+
+{# === New Intro Section (Image Left, Text Right) === #}
+<section class="intro-section">
+  <div class="intro-image">
+    <img src="/images/profile-pic.jpg" alt="Photo of Christian Harry Pancito"> 
+  </div>
+  <div class="intro-text">
+    <p class="intro-hello">👋 Hi there! My name is</p>
+    <h2 class="intro-name">Christian Harry Pancito</h2>
+    <p class="intro-bio">
+    	I'm a Student Developer in the Philippines eager to collaborate on exciting projects. Alongside my coding journey in higher education, I also offer professional video editing services. Let's create something amazing together!
+    </p>
+  </div>
+</section>
+
+</div>
+
+{# === Two Column Layout: Latest Posts & Projects === #}
+
+<section class="home-content-grid">
+  
+  {# Left Column: Latest Blog Posts #}
+  <div class="home-section home-blog">
+    <h2><a href="{{ '/blog/' | url }}">Latest Posts</a></h2>
+    {% set latestPosts = collections.post | reverse %}
+    {% if latestPosts.length > 0 %}
+
+      <div class="home-post-list">
+
+        {% for post in latestPosts %}
+          {% if loop.index <= 3 %}
+
+            <article class="home-post-item">
+
+              <h3><a href="{{ post.url | url }}">{{ post.data.title }}</a></h3>
+              <p class="post-meta">
+                <time datetime="{{ post.date | htmlDateString }}">{{ post.date | readableDate }}</time>
+              </p>
+              {% if post.data.excerpt %}
+              <p class="post-excerpt">{{ post.data.excerpt }}</p>
+              {% endif %}
+              <p><a href="{{ post.url | url }}" class="read-more">Read More →</a></p>
+            </article>
+
+          {% endif %}
+        {% endfor %}
+
+      </div>
+
+      <div class="view-all-link">
+        <a href="{{ '/blog/' | url }}" class="cta-button">View All Posts</a>
+      </div>
+    {% else %}
+      <p>No posts yet.</p>
+    {% endif %}
+  </div>
+
+  {# Right Column: Latest Projects #}
+  <div class="home-section home-projects">
+    <h2><a href="{{ '/portfolio/' | url }}">Latest Projects</a></h2>
+    {% set latestProjects = collections.project | reverse %}
+    {% if latestProjects.length > 0 %}
+
+      <div class="home-project-list">
+
+        {% for project in latestProjects %}
+          {% if loop.index <= 2 %}
+
+            <article class="home-project-item">
+
+              {% if project.data.image %}
+              <div class="home-project-thumbnail">
+                <a href="{{ project.url | url }}">
+                  <img src="{{ project.data.image | url }}" alt="Preview for {{ project.data.title }}">
+                </a>
+              </div>
+              {% endif %}
+              <div class="home-project-content">
+                <h3><a href="{{ project.url | url }}">{{ project.data.title }}</a></h3>
+                {% if project.data.summary %}
+                <p>{{ project.data.summary }}</p>
+                {% endif %}
+                <p><a href="{{ project.url | url }}" class="read-more">View Details →</a></p>
+              </div>
+            </article>
+
+          {% endif %}
+        {% endfor %}
+
+      </div>
+
+      <div class="view-all-link">
+        <a href="{{ '/portfolio/' | url }}" class="cta-button">View All Projects</a>
+      </div>
+    {% else %}
+      <p>No projects yet.</p>
+    {% endif %}
+  </div>
+
+</section>

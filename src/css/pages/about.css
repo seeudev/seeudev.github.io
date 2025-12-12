@@ -18,13 +18,20 @@
    EXPERIENCE SECTION
    ========================================================================== */
 
-.experience-section h2 {
-  margin-bottom: var(--spacing-lg);
-}
-
-/* Note: Experience card styles are in components/card.css */
-
-/* Additional experience section specific styles if needed */
 .experience-section {
   margin-top: var(--spacing-3xl);
+}
+
+.experience-section h2 {
+  margin-bottom: var(--spacing-xl);
+}
+
+/* Grid layout for uniform cards */
+.experience-section {
+  display: block;
+}
+
+.experience-section > .experience-card {
+  display: flex;
+  flex-direction: column;
 }

@@ -2,6 +2,7 @@
 layout: layout.njk
 title: About Me | seeudev
 ---
+<div class="content-container">
 <section class="intro-section">
   <div class="intro-text">
     <p class ="intro-hello">A little bit about who I am and what I do.</p>
@@ -70,3 +71,4 @@ title: About Me | seeudev
 
 </section>
 {# === End Experience Section === #}
+</div>
