@@ -56,3 +56,6 @@ debug.log
 
 # Optional eslint cache
 .eslintcache
+
+# github copilot 
+.github/copilot-instructions.md
