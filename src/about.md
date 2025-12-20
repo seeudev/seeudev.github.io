@@ -21,51 +21,54 @@ title: About Me | seeudev
   <h2>Experience</h2>
 
   <div class="experience-card">
-    <h3>Lead Developer</h3>
-    <p class="experience-company">University Semestral Project (Gamevault) - Lead</p>
+    <h3>Lead Full-Stack Developer</h3>
+    <p class="experience-company">University Semestral Project (GameVault) - Lead</p>
     <ul class="experience-details">
-      <li>Built a fully functioning full-stack Web App using Django with Supabase (PostgreSQL) Database.</li>
-      <li>Complete with full CRUD functionalities and Dashboards (User & Admin).</li>
-      <li>Integrated Gemini API seamlessly to fetch external sources like reveiws, ratings and compare local reviews within the web app.</li>
-      <li>Project successfully deployed on Render.</li>
+      <li>Developed full-stack game store platform using <strong>Django (Python)</strong> with <strong>PostgreSQL</strong> database hosted on <strong>Supabase</strong>.</li>
+      <li>Built comprehensive CRUD operations and role-based access control with separate User and Admin dashboards.</li>
+      <li>Integrated <strong>Google Gemini API</strong> to fetch external game reviews/ratings and compare with internal user feedback.</li>
+      <li>Implemented vanilla <strong>HTML/CSS/JavaScript</strong> frontend with responsive design and deployed on <strong>Render</strong>.</li>
     </ul>
   </div>
 
   <div class="experience-card">
-    <h3>Lead Developer</h3>
+    <h3>Lead Full-Stack Developer</h3>
     <p class="experience-company">University Semestral Project (Glyzier) - Lead</p>
     <ul class="experience-details">
-      <li>Built a fully functioning full-stack Web App using Springboot & React with Supabase (PostgreSQL) Database.</li>
-      <li>Complete with full CRUD functionalities and Dashboards (User, Seller & Admin).</li>
-      <li>Used Single Page Application architecture for efficient deployment.</li>
-      <li>Project successfully deployed on Render.</li>
+      <li>Architected and developed a full-stack artist portfolio/e-commerce platform using <strong>Spring Boot (Java)</strong> backend with <strong>React + Vite</strong> frontend.</li>
+      <li>Implemented <strong>JWT authentication</strong>, RESTful APIs, and comprehensive CRUD operations with role-based dashboards (User, Seller, Admin).</li>
+      <li>Designed and managed <strong>PostgreSQL database</strong> architecture via <strong>Supabase</strong> with optimized queries and relationships.</li>
+      <li>Utilized <strong>Maven</strong> for dependency management and deployed Single Page Application on <strong>Render</strong>.</li>
     </ul>
   </div>
 
   <div class="experience-card">
-    <h3>Videographer</h3>
+    <h3>Head Videographer & Video Editor</h3>
     <p class="experience-company">MHCS (Cebu) Inc. - Head Videographer</p>
     <ul class="experience-details">
-      <li>Helped create video content for the school institution.</li>
-      <li>Helped with various video related tasks during events (eg. Event Videos, Previews).</li>
+      <li>Produced professional video content using <strong>Adobe Premiere Pro</strong> for editing and <strong>After Effects</strong> for motion graphics.</li>
+      <li>Managed end-to-end video production workflow including filming, post-production, color grading, and audio mixing.</li>
+      <li>Created event videos, promotional previews, and institutional content with consistent brand aesthetics.</li>
     </ul>
   </div>
 
   <div class="experience-card">
-    <h3>Search Engine Optimization Copywriter</h3>
+    <h3>SEO Content Specialist</h3>
     <p class="experience-company">RawFilm - Freelance</p>
     <ul class="experience-details">
-      <li>Helped create metadata for stock footages.</li>
-      <li>Helped to optimize stock footage searchability by adding descriptive titles and keywords.</li>
+      <li>Optimized searchability of stock footage library through strategic metadata creation and keyword research.</li>
+      <li>Crafted descriptive titles, tags, and descriptions to improve asset discoverability and search rankings.</li>
+      <li>Applied SEO best practices to enhance content organization and user search experience.</li>
     </ul>
   </div>
 
   <div class="experience-card">
-    <h3>Video Platform Editor</h3>
+    <h3>Video Editor & Motion Graphics Designer</h3>
     <p class="experience-company">CrowdClip - Freelance</p>
     <ul class="experience-details">
-      <li>Helped with editing chunks of raw footage for customer activation on their website.</li>
-      <li>Helped create motion graphics and watermark templates.</li>
+      <li>Edited high-volume raw footage using <strong>Adobe Premiere Pro</strong> with efficient workflow optimization.</li>
+      <li>Designed reusable motion graphics templates and branded watermarks in <strong>After Effects</strong>.</li>
+      <li>Delivered polished video assets for customer activation campaigns within tight deadlines.</li>
     </ul>
   </div>
 
